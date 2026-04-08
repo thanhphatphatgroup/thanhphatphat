@@ -475,6 +475,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         img.addEventListener("touchend", () => {
 
+            e.preventDefault();
+
             if (moved) return; // 🔥 đang kéo thì bỏ
 
             zoomImg.src = img.src;
