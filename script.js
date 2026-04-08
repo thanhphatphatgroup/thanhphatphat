@@ -493,5 +493,5 @@ document.addEventListener("DOMContentLoaded", () => {
             overlay.classList.add("show");
         });
 
-    });
+    
 }
