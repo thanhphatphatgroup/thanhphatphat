@@ -461,21 +461,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function enableZoom() {
 
-        document.querySelectorAll(".slide img").forEach(img => {
+    document.querySelectorAll(".slide img").forEach(img => {
 
-            img.addEventListener("click", () => {
+        let moved = false;
 
-                if (!("ontouchstart" in window) && isDraggingGlobal) return;
+        img.addEventListener("touchstart", () => {
+            moved = false;
+        });
 
-                zoomImg.src = img.src;
-                overlay.classList.add("show");
-            });
+        img.addEventListener("touchmove", () => {
+            moved = true; // nếu vuốt thì không zoom
+        });
+
+        img.addEventListener("touchend", () => {
+
+            if (moved) return; // 🔥 đang kéo thì bỏ
+
+            zoomImg.src = img.src;
+            overlay.classList.add("show");
 
         });
-    }
 
-    overlay.addEventListener("click", () => {
-        overlay.classList.remove("show");
+        // desktop
+        img.addEventListener("click", () => {
+
+            if (isDraggingGlobal) return;
+
+            zoomImg.src = img.src;
+            overlay.classList.add("show");
+        });
+
     });
-
-});
+}
