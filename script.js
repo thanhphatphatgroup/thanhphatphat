@@ -465,7 +465,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             img.addEventListener("click", () => {
 
-                if (isDraggingGlobal) return;
+                if (!("ontouchstart" in window) && isDraggingGlobal) return;
 
                 zoomImg.src = img.src;
                 overlay.classList.add("show");
