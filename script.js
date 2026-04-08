@@ -473,7 +473,7 @@ document.addEventListener("DOMContentLoaded", () => {
             moved = true; // nếu vuốt thì không zoom
         });
 
-        img.addEventListener("touchend", () => {
+        img.addEventListener("touchend", (e) => {
 
             e.preventDefault();
 
@@ -493,5 +493,5 @@ document.addEventListener("DOMContentLoaded", () => {
             overlay.classList.add("show");
         });
 
-    
+    });
 }
