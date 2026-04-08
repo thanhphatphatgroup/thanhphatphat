@@ -456,42 +456,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===================== ZOOM =====================
 
-    const overlay = document.getElementById("zoomOverlay");
-    const zoomImg = document.getElementById("zoomImg");
+const overlay = document.getElementById("zoomOverlay");
+const zoomImg = document.getElementById("zoomImg");
 
-    function enableZoom() {
+function enableZoom() {
 
     document.querySelectorAll(".slide img").forEach(img => {
 
         let moved = false;
 
+        // ===== TOUCH START =====
         img.addEventListener("touchstart", () => {
             moved = false;
         });
 
+        // ===== TOUCH MOVE (vuốt) =====
         img.addEventListener("touchmove", () => {
-            moved = true; // nếu vuốt thì không zoom
+            moved = true;
         });
 
+        // ===== TOUCH END (tap thật) =====
         img.addEventListener("touchend", (e) => {
 
-            e.preventDefault();
+            e.preventDefault(); // 🔥 QUAN TRỌNG
 
-            if (moved) return; // 🔥 đang kéo thì bỏ
+            if (moved) return;
 
             zoomImg.src = img.src;
             overlay.classList.add("show");
 
         });
 
-        // desktop
+        // ===== DESKTOP CLICK =====
         img.addEventListener("click", () => {
 
             if (isDraggingGlobal) return;
 
             zoomImg.src = img.src;
             overlay.classList.add("show");
+
         });
 
     });
+
 }
+
+// ===== CLOSE ZOOM =====
+overlay.addEventListener("click", () => {
+    overlay.classList.remove("show");
+});
