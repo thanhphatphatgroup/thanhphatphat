@@ -883,6 +883,8 @@ html {
 
     user-select: none;
     -webkit-user-drag: none;
+
+    pointer-events: auto;
 }
 
 
@@ -1012,9 +1014,6 @@ html {
 
 #zoomOverlay.show img {
     transform: scale(1);
-}
-.slide img {
-    pointer-events: auto;
 }
 
 
