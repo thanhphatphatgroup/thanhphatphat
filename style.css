@@ -1013,7 +1013,9 @@ html {
 #zoomOverlay.show img {
     transform: scale(1);
 }
-
+.slide img {
+    pointer-events: auto;
+}
 
 
 /* ===================== PERFORMANCE BOOST ===================== */
