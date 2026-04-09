@@ -501,7 +501,9 @@ function enableZoom() {
     });
 }
 
-// ===== CLOSE =====
+// ===== CLOSE OVERLAY =====
 overlay.addEventListener("click", () => {
     overlay.classList.remove("show");
+});
+
 });
