@@ -454,28 +454,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    // ===================== ZOOM =====================
+   // ===================== ZOOM NEW (MOBILE + PC) =====================
 
-    const overlay = document.getElementById("zoomOverlay");
-    const zoomImg = document.getElementById("zoomImg");
+const overlay = document.getElementById("zoomOverlay");
+const zoomImg = document.getElementById("zoomImg");
 
-    function enableZoom() {
+function enableZoom() {
 
-        document.querySelectorAll(".slide img").forEach(img => {
+    document.querySelectorAll(".slide img").forEach(img => {
 
-            img.addEventListener("click", () => {
+        let startX = 0;
+        let startY = 0;
 
-                if (isDraggingGlobal) return;
+        // ===== TOUCH START =====
+        img.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        });
 
+        // ===== TOUCH END (TAP) =====
+        img.addEventListener("touchend", (e) => {
+
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+
+            const diffX = Math.abs(startX - endX);
+            const diffY = Math.abs(startY - endY);
+
+            // 👉 nếu là TAP (không phải vuốt)
+            if (diffX < 10 && diffY < 10 && !isDraggingGlobal) {
                 zoomImg.src = img.src;
                 overlay.classList.add("show");
-            });
+            }
 
         });
-    }
 
-    overlay.addEventListener("click", () => {
-        overlay.classList.remove("show");
+        // ===== CLICK PC =====
+        img.addEventListener("click", () => {
+
+            if (isDraggingGlobal) return;
+
+            zoomImg.src = img.src;
+            overlay.classList.add("show");
+        });
+
     });
+}
 
+// ===== CLOSE =====
+overlay.addEventListener("click", () => {
+    overlay.classList.remove("show");
 });
