@@ -382,6 +382,7 @@ li {
 /* ===================== FLOAT ===================== */
 
 .zalo-btn,
+.tiktok-btn,
 .messenger-btn {
     position: fixed;
     right: 20px;
@@ -397,7 +398,9 @@ li {
     bottom: 150px;
 }
 
-
+.tiktok-btn {
+    bottom: 210px;
+}
 
 /* ===================== BACK TO TOP (BLACK STYLE) ===================== */
 
@@ -505,6 +508,7 @@ li {
     }
 
     .zalo-btn,
+    .tiktok-btn,
     .messenger-btn {
         width: 45px;
     }
@@ -765,6 +769,7 @@ html {
     }
 
     .zalo-btn,
+    .tiktok-btn,
     .messenger-btn {
         right: 12px;
     }
@@ -1025,4 +1030,79 @@ html {
 .slide video {
     transform: translateZ(0);
     backface-visibility: hidden;
-}/* ===================== BACK TO TOP 
+}
+
+
+
+
+
+
+/* ===================== FLOAT BUTTON ===================== */
+
+.zalo-btn,
+.messenger-btn,
+.tiktok-btn {
+    position: fixed;
+    right: 20px;
+    width: 50px;
+    z-index: 999;
+
+    animation: floatIcon 2.5s infinite ease-in-out;
+}
+
+/* vị trí từng nút */
+.zalo-btn { bottom: 90px; }
+.messenger-btn { bottom: 150px; }
+.tiktok-btn { bottom: 210px; }
+
+
+/* ===================== IMAGE STYLE ===================== */
+
+.zalo-btn img,
+.messenger-btn img,
+.tiktok-btn img {
+    width: 100%;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+
+/* ===================== HOVER ===================== */
+
+.zalo-btn:hover img,
+.messenger-btn:hover img,
+.tiktok-btn:hover img {
+    transform: scale(1.15);
+}
+
+/* glow riêng từng app */
+.zalo-btn:hover img {
+    box-shadow: 0 0 15px #0068ff;
+}
+
+.messenger-btn:hover img {
+    box-shadow: 0 0 15px #0084ff;
+}
+
+.tiktok-btn:hover img {
+    box-shadow: 0 0 15px #000;
+}
+
+
+/* ===================== CLICK EFFECT ===================== */
+
+.zalo-btn:active img,
+.messenger-btn:active img,
+.tiktok-btn:active img {
+    transform: scale(0.95);
+}
+
+
+/* ===================== FLOAT ANIMATION ===================== */
+
+@keyframes floatIcon {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
