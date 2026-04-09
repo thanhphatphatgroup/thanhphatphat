@@ -383,7 +383,7 @@ li {
 
 .zalo-btn,
 .tiktok-btn,
-.messenger-btn {
+.facebook-btn {
     position: fixed;
     right: 20px;
     width: 50px;
@@ -394,7 +394,7 @@ li {
     bottom: 90px;
 }
 
-.messenger-btn {
+.facebook-btn {
     bottom: 150px;
 }
 
@@ -509,7 +509,7 @@ li {
 
     .zalo-btn,
     .tiktok-btn,
-    .messenger-btn {
+    .facebook-btn {
         width: 45px;
     }
 
@@ -770,7 +770,7 @@ html {
 
     .zalo-btn,
     .tiktok-btn,
-    .messenger-btn {
+    .facebook-btn {
         right: 12px;
     }
 
@@ -1040,7 +1040,7 @@ html {
 /* ===================== FLOAT BUTTON ===================== */
 
 .zalo-btn,
-.messenger-btn,
+.facebook-btn,
 .tiktok-btn {
     position: fixed;
     right: 20px;
@@ -1052,14 +1052,14 @@ html {
 
 /* vị trí từng nút */
 .zalo-btn { bottom: 90px; }
-.messenger-btn { bottom: 150px; }
+.facebook-btn { bottom: 150px; }
 .tiktok-btn { bottom: 210px; }
 
 
 /* ===================== IMAGE STYLE ===================== */
 
 .zalo-btn img,
-.messenger-btn img,
+.facebook-btn img,
 .tiktok-btn img {
     width: 100%;
     border-radius: 50%;
@@ -1070,7 +1070,7 @@ html {
 /* ===================== HOVER ===================== */
 
 .zalo-btn:hover img,
-.messenger-btn:hover img,
+.facebook-btn:hover img,
 .tiktok-btn:hover img {
     transform: scale(1.15);
 }
@@ -1080,7 +1080,7 @@ html {
     box-shadow: 0 0 15px #0068ff;
 }
 
-.messenger-btn:hover img {
+.facebook-btn:hover img {
     box-shadow: 0 0 15px #0084ff;
 }
 
@@ -1092,7 +1092,7 @@ html {
 /* ===================== CLICK EFFECT ===================== */
 
 .zalo-btn:active img,
-.messenger-btn:active img,
+.facebook-btn:active img,
 .tiktok-btn:active img {
     transform: scale(0.95);
 }
