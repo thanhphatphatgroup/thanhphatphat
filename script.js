@@ -456,52 +456,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===================== ZOOM =====================
 
-const overlay = document.getElementById("zoomOverlay");
-const zoomImg = document.getElementById("zoomImg");
+    const overlay = document.getElementById("zoomOverlay");
+    const zoomImg = document.getElementById("zoomImg");
 
-function enableZoom() {
+    function enableZoom() {
 
-    document.querySelectorAll(".slide img").forEach(img => {
+        document.querySelectorAll(".slide img").forEach(img => {
 
-        let moved = false;
+            img.addEventListener("click", () => {
 
-        // ===== TOUCH START =====
-        img.addEventListener("touchstart", () => {
-            moved = false;
-        });
+                if (isDraggingGlobal) return;
 
-        // ===== TOUCH MOVE (vuốt) =====
-        img.addEventListener("touchmove", () => {
-            moved = true;
-        });
-
-        // ===== TOUCH END (tap thật) =====
-        img.addEventListener("touchend", (e) => {
-
-            e.preventDefault(); // 🔥 QUAN TRỌNG
-
-            if (moved) return;
-
-            zoomImg.src = img.src;
-            overlay.classList.add("show");
+                zoomImg.src = img.src;
+                overlay.classList.add("show");
+            });
 
         });
+    }
 
-        // ===== DESKTOP CLICK =====
-        img.addEventListener("click", () => {
-
-            if (isDraggingGlobal) return;
-
-            zoomImg.src = img.src;
-            overlay.classList.add("show");
-
-        });
-
+    overlay.addEventListener("click", () => {
+        overlay.classList.remove("show");
     });
 
-}
-
-// ===== CLOSE ZOOM =====
-overlay.addEventListener("click", () => {
-    overlay.classList.remove("show");
 });

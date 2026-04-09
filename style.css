@@ -845,7 +845,7 @@ html {
 
     transition: transform 0.4s ease;
 
-    touch-action: manipulation;
+    touch-action: pan-y;
     cursor: grab;
 }
 
@@ -883,8 +883,6 @@ html {
 
     user-select: none;
     -webkit-user-drag: none;
-
-    pointer-events: auto;
 }
 
 
@@ -1015,6 +1013,7 @@ html {
 #zoomOverlay.show img {
     transform: scale(1);
 }
+
 
 
 /* ===================== PERFORMANCE BOOST ===================== */
