@@ -202,39 +202,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let i = 1;
 
-        function loadImage() {
+const formats = ["png", "jpg", "jpeg", "webp"];
 
-            const url = `images/products/${folder}/${folder}-${i}.png`;
+function loadImage() {
 
-            if (isLocalFile) {
+    let formatIndex = 0;
 
-                const img = new Image();
+    function tryNextFormat() {
 
-                img.onload = () => {
-                    addSlide(img);
-                    i++;
-                    loadImage();
-                };
-
-                img.onerror = () => loadVideo();
-
-                img.src = url;
-                return;
-            }
-
-            checkFile(url).then(exists => {
-
-                if (!exists) return loadVideo();
-
-                const img = new Image();
-                img.src = url;
-
-                addSlide(img);
-
-                i++;
-                loadImage();
-            });
+        if (formatIndex >= formats.length) {
+            loadVideo(); // ❌ không có ảnh → chuyển video
+            return;
         }
+
+        const ext = formats[formatIndex];
+
+        const img = new Image();
+        img.src = `images/products/${folder}/${folder}-${i}.${ext}`;
+
+        img.onload = () => {
+
+            addSlide(img);
+
+            i++;
+            loadImage(); // tiếp ảnh tiếp theo
+        };
+
+        img.onerror = () => {
+
+            formatIndex++;
+            tryNextFormat(); // thử format khác
+        };
+    }
+
+    tryNextFormat();
+}
 
 
 
@@ -242,58 +244,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let v = 1;
 
-        function loadVideo() {
+const videoFormats = ["mp4", "webm", "mov"];
 
-            const url = `images/products/${folder}/${folder}-video-${v}.mp4`;
+function loadVideo() {
 
-            if (isLocalFile) {
+    let formatIndex = 0;
 
-                const video = document.createElement("video");
+    function tryNextVideo() {
 
-                video.onloadeddata = () => {
-                    addSlide(video);
-                    v++;
-                    loadVideo();
-                };
-
-                video.onerror = () => finish();
-
-                video.src = url;
-                video.controls = true;
-                video.preload = "metadata";
-
-                return;
-            }
-
-            checkFile(url).then(exists => {
-
-                if (!exists) return finish();
-
-                const video = document.createElement("video");
-
-                video.src = url;
-                video.controls = true;
-                video.preload = "metadata";
-
-                addSlide(video);
-
-                v++;
-                loadVideo();
-            });
+        if (formatIndex >= videoFormats.length) {
+            finish();
+            return;
         }
 
+        const ext = videoFormats[formatIndex];
 
+        const video = document.createElement("video");
+        video.src = `images/products/${folder}/${folder}-video-${v}.${ext}`;
 
-        async function checkFile(url) {
+        video.controls = true;
+        video.preload = "metadata";
 
-            try {
-                const res = await fetch(url, { method: "HEAD" });
-                return res.ok;
-            } catch {
-                return false;
-            }
+        video.onloadeddata = () => {
 
-        }
+            addSlide(video);
+
+            v++;
+            loadVideo();
+        };
+
+        video.onerror = () => {
+
+            formatIndex++;
+            tryNextVideo();
+        };
+    }
+
+    tryNextVideo();
+}
 
 
 
