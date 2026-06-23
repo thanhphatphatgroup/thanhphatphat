@@ -268,7 +268,28 @@ function loadImage() {
             enableZoom();
         }
 
-        loadImage();
+        let loaded = false;
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting && !loaded) {
+
+            loaded = true;
+
+            loadImage();
+
+            observer.unobserve(slider);
+        }
+
+    });
+
+}, {
+    rootMargin: "300px"
+});
+
+observer.observe(slider);
 
 
 
