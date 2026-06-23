@@ -240,49 +240,6 @@ function loadImage() {
 
 
 
-        // ===================== LOAD VIDEO =====================
-
-        let v = 1;
-
-const videoFormats = ["mp4", "webm", "mov"];
-
-function loadVideo() {
-
-    let formatIndex = 0;
-
-    function tryNextVideo() {
-
-        if (formatIndex >= videoFormats.length) {
-            finish();
-            return;
-        }
-
-        const ext = videoFormats[formatIndex];
-
-        const video = document.createElement("video");
-        video.src = `images/products/${folder}/${folder}-video-${v}.${ext}`;
-
-        video.controls = true;
-        video.preload = "metadata";
-
-        video.onloadeddata = () => {
-
-            addSlide(video);
-
-            v++;
-            loadVideo();
-        };
-
-        video.onerror = () => {
-
-            formatIndex++;
-            tryNextVideo();
-        };
-    }
-
-    tryNextVideo();
-}
-
 
 
         // ===================== ADD SLIDE =====================
