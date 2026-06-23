@@ -211,7 +211,7 @@ function loadImage() {
     function tryNextFormat() {
 
         if (formatIndex >= formats.length) {
-            loadVideo(); // ❌ không có ảnh → chuyển video
+            finish();
             return;
         }
 
