@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let i = 1;
 
-const formats = ["png", "jpg", "jpeg", "webp"];
+const formats = ["webp"];
 
 function loadImage() {
 

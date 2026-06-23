@@ -93,7 +93,7 @@ li {
 .banner {
     position: relative;
     height: 600px;
-    background: url('images/banner.png') center / cover no-repeat;
+    background: url('images/banner.webp') center / cover no-repeat;
 
     display: flex;
     flex-direction: column;
