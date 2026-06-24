@@ -92,6 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".slider").forEach(slider => {
 
         const folder = slider.dataset.folder;
+        const MAX_IMAGES =
+            folder === "ly-giay" ? 15 : 999;
 
         const track = document.createElement("div");
         track.className = "slider-track";
@@ -201,6 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // ===================== LOAD IMAGE =====================
 
         let i = 1;
+        const MAX_HOME_IMAGES = 15;
 
 const formats = ["webp"];
 
@@ -218,14 +221,22 @@ function loadImage() {
         const ext = formats[formatIndex];
 
         const img = new Image();
-        img.src = `images/products/${folder}/${folder}-${i}.${ext}`;
+        
+        const basePath = window.PRODUCT_PAGE ? "../images/products/" : "images/products/";
+
+        img.src = `${basePath}${folder}/${folder}-${i}.${ext}`;
 
         img.onload = () => {
 
             addSlide(img);
 
             i++;
-            loadImage(); // tiếp ảnh tiếp theo
+
+            if (i <= MAX_HOME_IMAGES) {
+                loadImage();
+            } else {
+                finish();
+            }
         };
 
         img.onerror = () => {
