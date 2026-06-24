@@ -16,11 +16,6 @@
     min-height:100vh;
 }
 
-.catalog-page{
-    background:#fafafa;
-    min-height:100vh;
-}
-
 /* ===== HERO BANNER ===== */
 .hero-buttons{
     display:flex;
@@ -53,7 +48,9 @@
 
 .hero-overlay{
     max-width:900px;
+    width:100%;
     padding:20px;
+    box-sizing:border-box;
 }
 
 .hero-banner h1{
@@ -64,6 +61,7 @@
 }
 
 .hero-banner p{
+    color:#fff;
     font-size:18px;
     max-width:700px;
     margin:0 auto 30px;
@@ -154,10 +152,54 @@
 
 @media(max-width:768px){
 
+    .hero-banner{
+        height:auto;
+        padding:70px 15px;
+    }
+
+    .hero-overlay{
+        width:100%;
+        padding:10px;
+    }
+
+    .hero-banner h1{
+        font-size:28px;
+        line-height:1.25;
+    }
+
+    .hero-banner p{
+        font-size:16px;
+        margin-bottom:20px;
+    }
+
+    .hero-stats{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:10px;
+        width:100%;
+    }
+
+    .stat-box{
+        min-width:unset;
+        width:100%;
+        box-sizing:border-box;
+        padding:15px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .hero-buttons a{
+        width:100%;
+        max-width:320px;
+    }
+
     .catalog-grid{
-        padding:0 16px 40px;
+        padding:20px 12px 40px;
         grid-template-columns:repeat(2,1fr);
-        gap:12px;
+        gap:10px;
     }
 
 }
