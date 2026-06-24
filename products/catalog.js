@@ -20,7 +20,20 @@ function loadBatch() {
     function loadNext() {
 
         if (loaded >= batchSize) {
+
             loading = false;
+
+            setTimeout(() => {
+
+                if (
+                    document.documentElement.scrollHeight <=
+                    window.innerHeight + 200
+                ) {
+                    loadBatch();
+                }
+
+            }, 100);
+
             return;
         }
 
