@@ -23,16 +23,19 @@ function loadBatch() {
 
             loading = false;
 
-            setTimeout(() => {
+            requestAnimationFrame(() => {
+
+                const rect =
+                    loadMore.getBoundingClientRect();
 
                 if (
-                    document.documentElement.scrollHeight <=
-                    window.innerHeight + 200
+                    rect.top <
+                    window.innerHeight + 300
                 ) {
                     loadBatch();
                 }
 
-            }, 100);
+            });
 
             return;
         }
@@ -113,5 +116,15 @@ observer.observe(loadMore);
 overlay.addEventListener("click", function () {
 
     overlay.classList.remove("show");
+
+});
+window.addEventListener("resize", () => {
+
+    if (
+        document.documentElement.scrollHeight <=
+        window.innerHeight + 300
+    ) {
+        loadBatch();
+    }
 
 });
