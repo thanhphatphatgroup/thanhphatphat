@@ -4,14 +4,56 @@ const loadMore = document.getElementById("loadMore");
 const overlay = document.getElementById("zoomOverlay");
 const zoomImg = document.getElementById("zoomImg");
 
-let current = 1;
-let batchSize = 6;
+const folder = catalog.dataset.folder;
+
+let images = [];
+let currentIndex = 0;
+
+const batchSize = 6;
+
 let loading = false;
-let finished = false;
+
+
+
+// =========================
+// LOAD JSON
+// =========================
+
+async function init() {
+
+    try {
+
+        const response = await fetch(
+            `../images/products/${folder}/gallery.json`
+        );
+
+        const data = await response.json();
+
+        images = data.images || [];
+
+        loadBatch();
+
+    } catch (err) {
+
+        console.error("Không đọc được gallery.json");
+
+        console.error(err);
+
+    }
+
+}
+
+
+
+// =========================
+// LOAD 1 BATCH
+// =========================
 
 function loadBatch() {
 
-    if (loading || finished) return;
+    if (loading) return;
+
+    if (currentIndex >= images.length) return;
 
     loading = true;
 
@@ -23,29 +65,26 @@ function loadBatch() {
 
             loading = false;
 
-            requestAnimationFrame(() => {
-
-                const rect =
-                    loadMore.getBoundingClientRect();
-
-                if (
-                    rect.top <
-                    window.innerHeight + 300
-                ) {
-                    loadBatch();
-                }
-
-            });
+            requestAnimationFrame(checkViewport);
 
             return;
+
         }
+
+        if (currentIndex >= images.length) {
+
+            loading = false;
+
+            return;
+
+        }
+
+        const file = images[currentIndex];
 
         const img = new Image();
 
         img.src =
-            "../images/products/ly-giay/ly-giay-" +
-            current +
-            ".webp";
+            `../images/products/${folder}/${file}`;
 
         img.onload = function () {
 
@@ -53,49 +92,81 @@ function loadBatch() {
 
             item.className = "catalog-item";
 
-            item.innerHTML =
-                '<img src="' +
-                img.src +
-                '" alt="Ly giấy ' +
-                current +
-                '" loading="lazy">';
+            item.innerHTML = `
+                <img
+                    src="${img.src}"
+                    loading="lazy"
+                    alt="">
+            `;
 
             catalog.appendChild(item);
 
-            const image =
-                item.querySelector("img");
+            item.querySelector("img")
+                .addEventListener("click", function () {
 
-            image.addEventListener("click", function () {
+                    zoomImg.src = this.src;
 
-                zoomImg.src = image.src;
+                    overlay.classList.add("show");
 
-                overlay.classList.add("show");
+                });
 
-            });
+            currentIndex++;
 
-            current++;
             loaded++;
 
             loadNext();
+
         };
 
         img.onerror = function () {
 
-            finished = true;
-            loading = false;
+            console.warn("Không tìm thấy:", file);
+
+            currentIndex++;
+
+            loaded++;
+
+            loadNext();
 
         };
+
     }
 
     loadNext();
+
 }
 
-loadBatch();
+
+
+// =========================
+// CHECK VIEWPORT
+// =========================
+
+function checkViewport() {
+
+    if (!loadMore) return;
+
+    const rect = loadMore.getBoundingClientRect();
+
+    if (rect.top <= window.innerHeight + 300) {
+
+        loadBatch();
+
+    }
+
+}
+
+
+
+// =========================
+// INFINITE SCROLL
+// =========================
 
 const observer = new IntersectionObserver(
-    function (entries) {
 
-        entries.forEach(function (entry) {
+    entries => {
+
+        entries.forEach(entry => {
 
             if (entry.isIntersecting) {
 
@@ -106,25 +177,33 @@ const observer = new IntersectionObserver(
         });
 
     },
+
     {
+
         rootMargin: "300px"
+
     }
+
 );
 
 observer.observe(loadMore);
+
+
+
+// =========================
+// ZOOM
+// =========================
 
 overlay.addEventListener("click", function () {
 
     overlay.classList.remove("show");
 
 });
-window.addEventListener("resize", () => {
 
-    if (
-        document.documentElement.scrollHeight <=
-        window.innerHeight + 300
-    ) {
-        loadBatch();
-    }
 
-});
+
+// =========================
+// START
+// =========================
+
+init();
