@@ -5,6 +5,8 @@ window.addEventListener("DOMContentLoaded", function () {
     const reveals = document.querySelectorAll(".reveal");
     const backToTop = document.getElementById("backToTop");
 
+    if(backToTop){
+
     function handleScroll() {
 
         const windowHeight = window.innerHeight;
@@ -48,6 +50,8 @@ window.addEventListener("DOMContentLoaded", function () {
         });
 
     });
+    }
+      
 
 
 
