@@ -5,58 +5,51 @@ window.addEventListener("DOMContentLoaded", function () {
     const reveals = document.querySelectorAll(".reveal");
     const backToTop = document.getElementById("backToTop");
 
-    if(backToTop){
+    if (backToTop) {
 
-    function handleScroll() {
+        function handleScroll() {
 
-        const windowHeight = window.innerHeight;
+            const windowHeight = window.innerHeight;
 
-        // ===== REVEAL =====
-        reveals.forEach((el) => {
+            // ===== REVEAL =====
+            reveals.forEach((el) => {
 
-            const elementTop = el.getBoundingClientRect().top;
+                const elementTop = el.getBoundingClientRect().top;
 
-            if (elementTop < windowHeight - 50) {
-                el.classList.add("show");
+                if (elementTop < windowHeight - 50) {
+                    el.classList.add("show");
+                } else {
+                    el.classList.remove("show");
+                }
+
+            });
+
+            // ===== BACK TO TOP =====
+            if (window.scrollY > 300) {
+                backToTop.style.display = "block";
             } else {
-                el.classList.remove("show");
+                backToTop.style.display = "none";
             }
-
-        });
-
-        // ===== BACK TO TOP =====
-        if (window.scrollY > 300) {
-            backToTop.style.display = "block";
-        } else {
-            backToTop.style.display = "none";
         }
-    }
 
-    // ===== SCROLL EVENT =====
-    window.addEventListener("scroll", handleScroll);
+        // ===== SCROLL EVENT =====
+        window.addEventListener("scroll", handleScroll);
 
-    // ===== INIT =====
-    handleScroll();
+        // ===== INIT =====
+        handleScroll();
 
+        // ===================== BACK TO TOP CLICK =====================
+        backToTop.addEventListener("click", function () {
 
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
-    // ===================== BACK TO TOP CLICK =====================
-
-    backToTop.addEventListener("click", function () {
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
         });
-
-    });
     }
-      
-
-
 
     // ===================== SMOOTH SCROLL =====================
-
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
         anchor.addEventListener("click", function (e) {
@@ -85,7 +78,6 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
 // ===================== JS NEW =====================
 // ===================== SLIDER FINAL =====================
 
@@ -96,8 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".slider").forEach(slider => {
 
         const folder = slider.dataset.folder;
-        const MAX_IMAGES =
-            folder === "ly-giay" ? 15 : 999;
+        const MAX_IMAGES = folder === "ly-giay" ? 15 : 999;
 
         const track = document.createElement("div");
         track.className = "slider-track";
@@ -106,10 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let items = [];
         let index = 0;
 
-
-
         // ===================== LAYOUT =====================
-
         let slideWidth = 0;
         let gap = 0;
         let perView = 0;
@@ -131,10 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const slide = items[index * perView];
 
             if (slide) {
-
-                track.style.transform =
-                `translate3d(-${slide.offsetLeft}px,0,0)`;
-
+                track.style.transform = `translate3d(-${slide.offsetLeft}px,0,0)`;
             }
 
             const total = Math.ceil(items.length / perView);
@@ -166,10 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
             update();
         });
 
-
-
         // ===================== BUTTON =====================
-
         const prev = document.createElement("button");
         prev.innerHTML = "<";
         prev.className = "slider-btn prev";
@@ -201,83 +183,63 @@ document.addEventListener("DOMContentLoaded", () => {
             update();
         };
 
-
-
         // ===================== ENV =====================
-
         const isLocalFile = location.protocol === "file:";
 
-
-
         // ===================== LOAD IMAGE =====================
-
         let i = 1;
         const MAX_HOME_IMAGES = 15;
+        const formats = ["webp"];
 
-const formats = ["webp"];
+        function loadImage() {
 
-function loadImage() {
+            let formatIndex = 0;
 
-    let formatIndex = 0;
+            function tryNextFormat() {
 
-    function tryNextFormat() {
+                if (formatIndex >= formats.length) {
+                    finish();
+                    return;
+                }
 
-        if (formatIndex >= formats.length) {
-            finish();
-            return;
+                const ext = formats[formatIndex];
+                const img = new Image();
+                const basePath = window.PRODUCT_PAGE ? "../images/products/" : "images/products/";
+
+                img.src = `${basePath}${folder}/${folder}-${i}.${ext}`;
+
+                img.onload = () => {
+
+                    addSlide(img);
+                    i++;
+
+                    if (i <= MAX_HOME_IMAGES) {
+                        loadImage();
+                    } else {
+                        finish();
+                    }
+                };
+
+                img.onerror = () => {
+                    formatIndex++;
+                    tryNextFormat(); // thử format khác
+                };
+            }
+
+            tryNextFormat();
         }
 
-        const ext = formats[formatIndex];
-
-        const img = new Image();
-        
-        const basePath = window.PRODUCT_PAGE ? "../images/products/" : "images/products/";
-
-        img.src = `${basePath}${folder}/${folder}-${i}.${ext}`;
-
-        img.onload = () => {
-
-            addSlide(img);
-
-            i++;
-
-            if (i <= MAX_HOME_IMAGES) {
-                loadImage();
-            } else {
-                finish();
-            }
-        };
-
-        img.onerror = () => {
-
-            formatIndex++;
-            tryNextFormat(); // thử format khác
-        };
-    }
-
-    tryNextFormat();
-}
-
-
-
-
-
         // ===================== ADD SLIDE =====================
-
         function addSlide(el) {
 
             const wrap = document.createElement("div");
             wrap.className = "slide";
 
             wrap.appendChild(el);
-
             track.appendChild(wrap);
         }
 
-
-
         // ===================== FINISH =====================
-
         function finish() {
 
             items = Array.from(track.children);
@@ -290,31 +252,26 @@ function loadImage() {
 
         let loaded = false;
 
-const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) => {
 
-    entries.forEach(entry => {
+            entries.forEach(entry => {
 
-        if (entry.isIntersecting && !loaded) {
+                if (entry.isIntersecting && !loaded) {
 
-            loaded = true;
+                    loaded = true;
+                    loadImage();
+                    observer.unobserve(slider);
+                }
 
-            loadImage();
+            });
 
-            observer.unobserve(slider);
-        }
+        }, {
+            rootMargin: "300px"
+        });
 
-    });
-
-}, {
-    rootMargin: "300px"
-});
-
-observer.observe(slider);
-
-
+        observer.observe(slider);
 
         // ===================== MOBILE SWIPE =====================
-
         let startX = 0;
         let currentX = 0;
         let isDragging = false;
@@ -341,8 +298,7 @@ observer.observe(slider);
 
             const diff = startX - currentX;
 
-            track.style.transition =
-                "transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)";
+            track.style.transition = "transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)";
 
             if (Math.abs(diff) > 40) {
 
@@ -356,10 +312,7 @@ observer.observe(slider);
             isDragging = false;
         });
 
-
-
         // ===================== DESKTOP DRAG =====================
-
         let dragStartX = 0;
         let isDrag = false;
         let currentDiff = 0;
@@ -369,10 +322,7 @@ observer.observe(slider);
             if (!isDrag) return;
 
             const slide = items[index * perView];
-
-            const baseX =
-            slide ? slide.offsetLeft : 0;
-
+            const baseX = slide ? slide.offsetLeft : 0;
             const maxDrag = slideWidth * 0.5;
 
             const limitedDiff = Math.max(
@@ -381,11 +331,9 @@ observer.observe(slider);
             );
 
             const damp = 0.7;
-
             const finalX = Math.round(baseX - limitedDiff * damp);
 
-            track.style.transform =
-                `translate3d(-${finalX}px,0,0)`;
+            track.style.transform = `translate3d(-${finalX}px,0,0)`;
 
             requestAnimationFrame(renderDrag);
         }
@@ -419,8 +367,7 @@ observer.observe(slider);
 
             const diff = currentDiff;
 
-            track.style.transition =
-                "transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)";
+            track.style.transition = "transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)";
             track.style.willChange = "auto";
 
             if (Math.abs(diff) > 80) {
@@ -441,59 +388,55 @@ observer.observe(slider);
 
     });
 
+    // ===================== ZOOM NEW (MOBILE + PC) =====================
+    const overlay = document.getElementById("zoomOverlay");
+    const zoomImg = document.getElementById("zoomImg");
 
+    function enableZoom() {
 
-   // ===================== ZOOM NEW (MOBILE + PC) =====================
+        document.querySelectorAll(".slide img").forEach(img => {
 
-const overlay = document.getElementById("zoomOverlay");
-const zoomImg = document.getElementById("zoomImg");
+            let startX = 0;
+            let startY = 0;
 
-function enableZoom() {
+            // ===== TOUCH START =====
+            img.addEventListener("touchstart", (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            });
 
-    document.querySelectorAll(".slide img").forEach(img => {
+            // ===== TOUCH END (TAP) =====
+            img.addEventListener("touchend", (e) => {
 
-        let startX = 0;
-        let startY = 0;
+                const endX = e.changedTouches[0].clientX;
+                const endY = e.changedTouches[0].clientY;
 
-        // ===== TOUCH START =====
-        img.addEventListener("touchstart", (e) => {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-        });
+                const diffX = Math.abs(startX - endX);
+                const diffY = Math.abs(startY - endY);
 
-        // ===== TOUCH END (TAP) =====
-        img.addEventListener("touchend", (e) => {
+                // 👉 nếu là TAP (không phải vuốt)
+                if (diffX < 10 && diffY < 10 && !isDraggingGlobal) {
+                    zoomImg.src = img.src;
+                    overlay.classList.add("show");
+                }
 
-            const endX = e.changedTouches[0].clientX;
-            const endY = e.changedTouches[0].clientY;
+            });
 
-            const diffX = Math.abs(startX - endX);
-            const diffY = Math.abs(startY - endY);
+            // ===== CLICK PC =====
+            img.addEventListener("click", () => {
 
-            // 👉 nếu là TAP (không phải vuốt)
-            if (diffX < 10 && diffY < 10 && !isDraggingGlobal) {
+                if (isDraggingGlobal) return;
+
                 zoomImg.src = img.src;
                 overlay.classList.add("show");
-            }
+            });
 
         });
+    }
 
-        // ===== CLICK PC =====
-        img.addEventListener("click", () => {
-
-            if (isDraggingGlobal) return;
-
-            zoomImg.src = img.src;
-            overlay.classList.add("show");
-        });
-
+    // ===== CLOSE OVERLAY =====
+    overlay.addEventListener("click", () => {
+        overlay.classList.remove("show");
     });
-}
-
-// ===== CLOSE OVERLAY =====
-overlay.addEventListener("click", () => {
-    overlay.classList.remove("show");
-});
 
 });
-
