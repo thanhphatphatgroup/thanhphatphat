@@ -1,4 +1,4 @@
-// ===================== DOM READY =====================
+﻿// ===================== DOM READY =====================
 
 window.addEventListener("DOMContentLoaded", function () {
 
@@ -128,9 +128,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!items.length) return;
 
-            const moveX = Math.round(index * (slideWidth + gap) * perView);
+            const slide = items[index * perView];
 
-            track.style.transform = `translate3d(-${moveX}px,0,0)`;
+            if (slide) {
+
+                track.style.transform =
+                `translate3d(-${slide.offsetLeft}px,0,0)`;
+
+            }
 
             const total = Math.ceil(items.length / perView);
 
@@ -363,7 +368,10 @@ observer.observe(slider);
 
             if (!isDrag) return;
 
-            const baseX = index * (slideWidth + gap) * perView;
+            const slide = items[index * perView];
+
+            const baseX =
+            slide ? slide.offsetLeft : 0;
 
             const maxDrag = slideWidth * 0.5;
 

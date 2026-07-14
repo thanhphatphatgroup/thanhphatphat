@@ -1,4 +1,4 @@
-/* ===================== RESET ===================== */
+/* RESET */
 
 * {
     margin: 0;
@@ -16,9 +16,7 @@ img {
     height: auto;
 }
 
-
-
-/* ===================== GLOBAL ===================== */
+/* GLOBAL */
 
 section {
     padding: 80px 120px;
@@ -43,8 +41,8 @@ p {
 }
 
 ul {
-    padding-left: 20px;
     margin-top: 10px;
+    padding-left: 20px;
 }
 
 li {
@@ -52,9 +50,7 @@ li {
     line-height: 1.6;
 }
 
-
-
-/* ===================== BUTTON ===================== */
+/* BUTTON */
 
 .btn {
     display: inline-block;
@@ -66,8 +62,8 @@ li {
 }
 
 .primary {
-    background: #007bff;
     color: #fff;
+    background: #007bff;
 }
 
 .primary:hover {
@@ -76,38 +72,55 @@ li {
 }
 
 .secondary {
-    border: 2px solid #007bff;
     color: #007bff;
     background: #fff;
+    border: 2px solid #007bff;
 }
 
 .secondary:hover {
-    background: #007bff;
     color: #fff;
+    background: #007bff;
 }
 
-
-
-/* ===================== BANNER ===================== */
+/* BANNER */
 
 .banner {
     position: relative;
-    height: 600px;
-    background: url('images/banner.webp') center / cover no-repeat;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 
+    height: 600px;
     padding-left: 80px;
+
     color: #fff;
+    background: url("images/banner.webp") center / cover no-repeat;
+}
+
+.banner p {
+
+    margin-bottom: 28px;
+
+}
+
+.buttons {
+
+    display: flex;
+
+    gap: 16px;
+
+    flex-wrap: wrap;
+
 }
 
 .banner::before {
     content: "";
+
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.3);
+
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .banner * {
@@ -115,65 +128,104 @@ li {
     z-index: 1;
 }
 
+/* ABOUT */
 
-/* ===================== ABOUT ===================== */
+.about h2 {
+
+    margin-bottom: 35px;
+
+}
 
 .about {
     background: #f5cfcf;
 }
 
 .about-grid {
-    display: flex;
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
     gap: 20px;
 }
 
 .card {
-    flex: 1;
-    background: #dcddee;
     padding: 20px;
+
+    background: #dcddee;
     border-radius: 10px;
 }
 
+.about-desc {
 
+    max-width: 900px;
 
-/* ===================== FOUNDER ===================== */
+    margin: 30px auto 0;
 
+    text-align: center;
+
+    font-size: 20px;
+
+    line-height: 1.9;
+
+    font-weight: 600;
+
+    color: #333;
+
+    letter-spacing: .3px;
+
+}
+
+/* FOUNDER */
+
+.founder h2 {
+
+    margin-bottom: 35px;
+
+}
 .founder {
     background: #f5cfcf;
 }
 
 .founder-container {
     display: flex;
+    align-items: center;
     gap: 40px;
 
-    background: #f0f0f0;
     padding: 40px;
-    border-radius: 15px;
 
-    align-items: center;
+    background: #f0f0f0;
+    border-radius: 15px;
 }
 
 .founder-image img {
+    display: block;
+
     width: 100%;
     max-width: 320px;
     max-height: 320px;
-    object-fit: contain;
 
     margin: auto;
+
+    object-fit: contain;
     border-radius: 12px;
 }
 
+/* VISION */
 
+.vision h2 {
 
-/* ===================== VISION ===================== */
+    margin-bottom: 35px;
+
+}
 
 .vision {
     background: #f5cfcf;
 }
 
 .vision-container {
-    background: #eee;
     padding: 40px;
+
+    background: #eee;
     border-radius: 20px;
 }
 
@@ -184,7 +236,9 @@ li {
 
 .vision-card {
     flex: 1;
+
     padding: 25px;
+
     border-radius: 15px;
 }
 
@@ -196,9 +250,13 @@ li {
     background: #e7b6ad;
 }
 
+/* CORE */
 
+.core h2 {
 
-/* ===================== CORE ===================== */
+    margin-bottom: 35px;
+
+}
 
 .core {
     background: #eee;
@@ -217,6 +275,7 @@ li {
 
 .icon {
     width: 60px;
+
     display: flex;
     justify-content: center;
 }
@@ -224,11 +283,17 @@ li {
 .icon img {
     max-width: 45px;
     max-height: 45px;
+
     object-fit: contain;
 }
 
+/* PRODUCTS */
 
-/* ===================== PRODUCTS ===================== */
+.products h2 {
+
+    margin-bottom: 35px;
+
+}
 
 .products {
     background: #f7f7f7;
@@ -236,17 +301,18 @@ li {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 40px;
 }
 
 .product-card {
-    background: #fff;
     padding: 25px;
+
+    background: #fff;
     border-radius: 16px;
 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 .product-card:hover {
@@ -255,18 +321,21 @@ li {
 
 .product-card img {
     height: 220px;
+    margin-bottom: 15px;
+    padding: 10px;
+
     object-fit: contain;
 
     background: #f3f3f3;
-    padding: 10px;
     border-radius: 12px;
-
-    margin-bottom: 15px;
 }
 
+/* SOLUTION */
+.solution h2 {
 
+    margin-bottom: 35px;
 
-/* ===================== SOLUTION ===================== */
+}
 
 .solution {
     background: #f5e8a3;
@@ -276,21 +345,27 @@ li {
     display: flex;
     gap: 40px;
 
-    background: #efe3a2;
     padding: 30px;
+
+    background: #efe3a2;
     border-radius: 15px;
 }
 
 .solution-image img {
     width: 100%;
     max-height: 350px;
+
     object-fit: cover;
     border-radius: 16px;
 }
 
+/* PROCESS */
 
+.process h2 {
 
-/* ===================== PROCESS ===================== */
+    margin-bottom: 35px;
+
+} 
 
 .process {
     background: #f5e8a3;
@@ -298,28 +373,34 @@ li {
 
 .process-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 40px;
 }
 
 .process-bar {
-    height: 80px;
-    background: #b9b8c9;
-
     display: flex;
     align-items: center;
     justify-content: center;
+
+    height: 80px;
+
+    background: #b9b8c9;
 }
 
 .process-bar img {
     width: 40px;
     height: 40px;
+
     object-fit: contain;
 }
 
+/* PARTNER */
 
+.partner h2 {
 
-/* ===================== PARTNER ===================== */
+    margin-bottom: 35px;
+
+}
 
 .partner {
     background: #f7f7f7;
@@ -332,7 +413,7 @@ li {
 }
 
 .partner-list {
-    flex: 1;
+    flex: 1 1 350px;
 
     display: flex;
     flex-direction: column;
@@ -340,15 +421,16 @@ li {
 }
 
 .partner-item {
-    background: #fff;
     padding: 20px;
 
+    background: #fff;
     border-left: 6px solid #5b5bd6;
     border-radius: 12px;
 }
 
 .partner-image {
-    flex: 1;
+    flex: 1 1 350px;
+
     display: flex;
     justify-content: center;
 }
@@ -356,13 +438,18 @@ li {
 .partner-image img {
     width: 100%;
     max-height: 500px;
+
     object-fit: contain;
     border-radius: 20px;
 }
 
+/* CONTACT */
 
+.contact h2 {
 
-/* ===================== CONTACT ===================== */
+    margin-bottom: 35px;
+
+}
 
 .contact {
     background: #e7b8b0;
@@ -371,175 +458,14 @@ li {
 .contact-box {
     display: flex;
     gap: 50px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    padding: 40px;
 
     background: #f5f5f5;
-    padding: 40px;
     border-radius: 20px;
 }
-
-
-
-/* ===================== FLOAT ===================== */
-
-.zalo-btn,
-.tiktok-btn,
-.facebook-btn {
-    position: fixed;
-    right: 20px;
-    width: 50px;
-    z-index: 999;
-}
-
-.zalo-btn {
-    bottom: 90px;
-}
-
-.facebook-btn {
-    bottom: 150px;
-}
-
-.tiktok-btn {
-    bottom: 210px;
-}
-
-/* ===================== BACK TO TOP (BLACK STYLE) ===================== */
-
-#backToTop {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-
-    width: 44px;
-    height: 44px;
-
-    border-radius: 50%;
-
-    background: #000;
-    color: #fff;
-
-    font-size: 18px;
-
-    display: none;
-    cursor: pointer;
-
-    z-index: 999;
-
-    border: none;
-
-    transition: 0.3s;
-}
-
-#backToTop:hover {
-    transform: scale(1.1);
-    background: #222;
-}
-
-
-
-/* ===================== SCROLL ===================== */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 0.8s;
-}
-
-.reveal.show {
-    opacity: 1;
-    transform: none;
-}
-
-
-
-/* ===================== RESPONSIVE ===================== */
-
-@media (max-width: 768px) {
-
-    section {
-        padding: 50px 20px;
-    }
-
-    h1 {
-        font-size: 28px;
-    }
-
-    h2 {
-        font-size: 24px;
-    }
-
-    .banner {
-        height: auto;
-        padding: 40px 20px;
-    }
-
-    .about-grid,
-    .vision-grid,
-    .core-grid,
-    .solution-box,
-    .founder-container,
-    .partner-container,
-    .contact-box {
-        flex-direction: column;
-    }
-
-    .product-grid,
-    .process-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .partner-image img {
-        max-height: none;
-        border-radius: 16px;
-    }
-
-    .founder-image img {
-        max-width: 220px;
-        max-height: 220px;
-    }
-
-    .solution-image img {
-        max-height: 220px;
-    }
-
-    .btn {
-        display: block;
-        text-align: center;
-        margin-bottom: 10px;
-    }
-
-    .zalo-btn,
-    .tiktok-btn,
-    .facebook-btn {
-        width: 45px;
-    }
-
-    #backToTop {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-
-
-/* ===================== FIX KHOẢNG CÁCH PROCESS ===================== */
-
-.process-item {
-    margin-bottom: 25px;
-}
-
-.process-item h3 {
-    margin-top: 12px;
-    margin-bottom: 8px;
-}
-
-.process-item p {
-    margin-bottom: 0;
-    line-height: 1.6;
-}
-
-
-
-/* ===================== FIX SPACING CONTACT ===================== */
 
 .contact-left p {
     margin-bottom: 12px;
@@ -562,8 +488,12 @@ li {
 }
 
 .contact-right img {
+    width: 100%;
+    max-width: 100%;
+
     margin-top: 20px;
     margin-bottom: 15px;
+
     border-radius: 12px;
 }
 
@@ -576,226 +506,24 @@ li {
     line-height: 1.6;
 }
 
-
-
-
-/* ===================== FOUNDER CARD ===================== */
-
-.founder {
-    padding: 80px 120px;
-    background: #e2bfb7;
-}
-
-.founder-container {
-    background: #f5f5f5;
-    border-radius: 20px;
-    padding: 50px 60px;
-
-    display: flex;
-    align-items: center;
-    gap: 60px;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-.founder-text {
-    flex: 1;
-    max-width: 600px;
-}
-
-.founder-text h2 {
-    font-size: 38px;
-    margin-bottom: 20px;
-}
-
-.founder-text p {
-    line-height: 1.7;
-    margin-bottom: 15px;
-}
-
-.founder-text blockquote {
-    margin: 25px 0;
-    padding-left: 18px;
-    border-left: 4px solid #2b5bd7;
-    font-weight: bold;
-}
-
-.founder-text h4 {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.founder-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.founder-image img {
-    max-width: 320px;
-    max-height: 320px;
-    object-fit: contain;
-}
-
-
-
-/* ===================== MOBILE FOUNDER ===================== */
-
-@media (max-width: 768px) {
-
-    .founder {
-        padding: 50px 20px;
-    }
-
-    .founder-container {
-        flex-direction: column;
-        padding: 30px 20px;
-        gap: 30px;
-    }
-
-    .founder-text {
-        max-width: 100%;
-    }
-
-    .founder-image img {
-        max-width: 220px;
-    }
-}
-
-
-
-/* ===================== SCROLL SMOOTH ===================== */
-
-html {
-    scroll-behavior: smooth;
-}
-
-
-
-/* ===================== FIX ABOUT DESC ===================== */
-
-.about-desc {
-    margin-top: 25px;
-    line-height: 1.7;
-}
-
-
-
-/* ===================== FIX CONTACT DESKTOP ===================== */
-
-.contact-box {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-
 .contact-left {
-    flex: 1;
+    flex: 1 1 350px;
 }
 
 .contact-right {
-    flex: 1;
+    flex: 1 1 350px;
 }
 
-.contact-right img {
-    width: 100%;
-    max-width: 100%;
-}
-
-
-
-/* ===================== MOBILE FIX FULL ===================== */
-
-@media (max-width: 768px) {
-
-    section {
-        padding: 40px 16px;
-    }
-
-    .banner {
-        padding: 40px 16px;
-        height: auto;
-        text-align: left;
-    }
-
-    .about-grid {
-        flex-direction: column;
-    }
-
-    .founder-container {
-        flex-direction: column;
-        padding: 25px;
-        gap: 25px;
-    }
-
-    .vision-grid {
-        flex-direction: column;
-    }
-
-    .core-grid {
-        flex-direction: column;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .solution-box {
-        flex-direction: column;
-    }
-
-    .process-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .partner-container {
-        flex-direction: column;
-    }
-
-    .contact-box {
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    img {
-        width: 100%;
-        height: auto;
-    }
-
-    .btn {
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-
-    .zalo-btn,
-    .tiktok-btn,
-    .facebook-btn {
-        right: 12px;
-    }
-
-    #backToTop {
-        right: 12px;
-        bottom: 12px;
-    }
-}
-
-
-
-/* ===================== newcode ===================== */
-
-
-
-/* ===================== PRODUCT CARD ===================== */
+/* PRODUCT DETAIL */
 
 .product-item {
-    background: #fff;
-    border-radius: 20px;
-
     padding: 25px;
     margin-bottom: 50px;
 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    background: #fff;
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
 }
 
@@ -812,21 +540,7 @@ html {
     margin-top: 10px;
 }
 
-
-
-/* ===================== MOBILE ===================== */
-
-@media (max-width: 768px) {
-
-    .product-item {
-        padding: 18px;
-        margin-bottom: 30px;
-    }
-}
-
-
-
-/* ===================== SLIDER ===================== */
+/* SLIDER */
 
 .slider {
     position: relative;
@@ -834,9 +548,7 @@ html {
     margin-bottom: 20px;
 }
 
-
-
-/* ===================== TRACK ===================== */
+/* TRACK */
 
 .slider-track {
     display: flex;
@@ -852,25 +564,20 @@ html {
     cursor: grabbing;
 }
 
-
-
-/* ===================== SLIDE ===================== */
+/* SLIDE */
 
 .slide {
-    min-width: calc((100% - 40px) / 3);
-
     display: flex;
     align-items: center;
     justify-content: center;
 
+    min-width: calc((100% - 40px) / 3);
     height: 240px;
 
     border-radius: 12px;
 }
 
-
-
-/* ===================== IMAGE + VIDEO ===================== */
+/* IMAGE */
 
 .slide img,
 .slide video {
@@ -884,50 +591,32 @@ html {
     -webkit-user-drag: none;
 }
 
-
-
-/* ===================== MOBILE ===================== */
-
-@media (max-width: 768px) {
-
-    .slider-track {
-        gap: 10px;
-    }
-
-    .slide {
-        min-width: 100%;
-        height: 200px;
-    }
-}
-
-
-
-/* ===================== BUTTON ===================== */
+/* SLIDER BUTTON */
 
 .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
 
-    background: rgba(255,255,255,0);
+    padding: 10px 14px;
+
+    background: rgba(255, 255, 255, 0);
     backdrop-filter: blur(6px);
 
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
 
+    color: #000;
     font-size: 18px;
-    padding: 10px 14px;
 
     cursor: pointer;
     z-index: 2;
-
-    border-radius: 50%;
-    color: #000;
 
     transition: 0.3s;
 }
 
 .slider-btn:hover {
-    background: rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.5);
     transform: translateY(-50%) scale(1.1);
 }
 
@@ -939,22 +628,22 @@ html {
     right: 10px;
 }
 
-
-
-/* ===================== DOTS ===================== */
+/* DOTS */
 
 .dots {
-    text-align: center;
     margin-top: 10px;
+    text-align: center;
 }
 
 .dots span {
     display: inline-block;
+
     width: 8px;
     height: 8px;
 
-    background: #ccc;
     margin: 0 4px;
+
+    background: #ccc;
     border-radius: 50%;
 }
 
@@ -962,9 +651,7 @@ html {
     background: #000;
 }
 
-
-
-/* ===================== FIX SELECT ===================== */
+/* USER SELECT */
 
 .slider,
 .slider * {
@@ -972,25 +659,24 @@ html {
     -webkit-user-select: none;
 }
 
-
-
-/* ===================== ZOOM ===================== */
+/* ZOOM */
 
 #zoomOverlay {
     position: fixed;
     inset: 0;
 
-    background: rgba(0,0,0,0.85);
-
     display: flex;
     align-items: center;
     justify-content: center;
 
+    background: rgba(0, 0, 0, 0.85);
+
     opacity: 0;
     visibility: hidden;
 
-    transition: 0.3s;
     z-index: 9999;
+
+    transition: 0.3s;
 }
 
 #zoomOverlay.show {
@@ -1003,7 +689,7 @@ html {
     max-height: 90%;
 
     border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 
     transform: scale(0.8);
     transition: 0.3s;
@@ -1013,61 +699,44 @@ html {
     transform: scale(1);
 }
 
-
-
-/* ===================== PERFORMANCE BOOST ===================== */
-
-.slider-track {
-    will-change: transform;
-    transform: translate3d(0,0,0);
-}
-
-.slide {
-    will-change: transform;
-}
-
-.slide img,
-.slide video {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
-
-
-
-
-
-/* ===================== FLOAT BUTTON ===================== */
+/* FLOAT BUTTON */
 
 .zalo-btn,
 .facebook-btn,
 .tiktok-btn {
     position: fixed;
     right: 20px;
+
     width: 50px;
     z-index: 999;
 
     animation: floatIcon 2.5s infinite ease-in-out;
 }
 
-/* vị trí từng nút */
-.zalo-btn { bottom: 90px; }
-.facebook-btn { bottom: 150px; }
-.tiktok-btn { bottom: 210px; }
+.zalo-btn {
+    bottom: 90px;
+}
 
+.facebook-btn {
+    bottom: 150px;
+}
 
-/* ===================== IMAGE STYLE ===================== */
+.tiktok-btn {
+    bottom: 210px;
+}
+
+/* FLOAT IMAGE */
 
 .zalo-btn img,
 .facebook-btn img,
 .tiktok-btn img {
     width: 100%;
+
     border-radius: 50%;
     transition: 0.3s;
 }
 
-
-/* ===================== HOVER ===================== */
+/* FLOAT HOVER */
 
 .zalo-btn:hover img,
 .facebook-btn:hover img,
@@ -1075,7 +744,6 @@ html {
     transform: scale(1.15);
 }
 
-/* glow riêng từng app */
 .zalo-btn:hover img {
     box-shadow: 0 0 15px #0068ff;
 }
@@ -1088,8 +756,7 @@ html {
     box-shadow: 0 0 15px #000;
 }
 
-
-/* ===================== CLICK EFFECT ===================== */
+/* FLOAT CLICK */
 
 .zalo-btn:active img,
 .facebook-btn:active img,
@@ -1097,12 +764,454 @@ html {
     transform: scale(0.95);
 }
 
-
-/* ===================== FLOAT ANIMATION ===================== */
+/* FLOAT ANIMATION */
 
 @keyframes floatIcon {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-    100% { transform: translateY(0); }
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
+/* BACK TO TOP */
+
+#backToTop {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #000;
+    color: #fff;
+
+    font-size: 18px;
+    cursor: pointer;
+
+    z-index: 999;
+
+    transition: 0.3s;
+}
+
+#backToTop:hover {
+    background: #222;
+    transform: scale(1.1);
+}
+
+/* SCROLL */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+
+    transition: 0.8s;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: none;
+}
+
+/* PERFORMANCE */
+
+.slider-track {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+}
+
+.slide {
+    will-change: transform;
+}
+
+.slide img,
+.slide video {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* SECTION SPACING */
+
+section + section {
+
+    margin-top: 24px;
+
+}
+
+/* ================================================== MOBILE ================================================== */
+@media (max-width: 1200px) {
+
+    .contact-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-right img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+
+        margin: 0 auto 20px;
+    }
+
+    .contact-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    section {
+        padding: 70px 60px;
+    }
+
+    .product-grid {
+        gap: 30px;
+    }
+
+    .partner-container,
+    .contact-box,
+    .solution-box,
+    .founder-container {
+        gap: 35px;
+    }
+}
+
+@media (max-width: 992px) {
+
+    section {
+        padding: 60px 35px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    .banner {
+        height: auto;
+        padding: 70px 35px;
+    }
+
+    .about-grid,
+    .vision-grid,
+    .solution-box,
+    .partner-container,
+    .contact-box,
+    .founder-container,
+    .core-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .product-grid,
+    .process-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+    }
+
+    .slide {
+        min-width: 50%;
+    }
+
+    .partner-image img,
+    .contact-right img {
+        max-height: 360px;
+        margin: 0 auto;
+    }
+}
+
+/* PHONE */
+
+@media (max-width: 768px) {
+
+    .buttons {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 14px;
+
+        margin-top: 26px;
+
+    }
+
+    section + section {
+
+        margin-top: 16px;
+
+    }
+
+    section {
+        padding: 50px 20px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .banner {
+
+        display: flex;
+
+        justify-content: center;
+
+        min-height: 420px;
+
+        padding: 90px 20px 70px;
+
+    }
+    .banner h1{
+
+        margin-bottom:18px;
+
+        line-height:1.15;
+
+    }
+
+    .banner p{
+
+        max-width:320px;
+
+        margin-bottom:28px;
+
+        line-height:1.7;
+
+    }
+
+    .banner p {
+        max-width: 100%;
+    }
+
+    .about-grid,
+    .vision-grid,
+    .solution-box,
+    .partner-container,
+    .contact-box,
+    .founder-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .core-grid {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .product-grid,
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .founder-image img {
+        max-width: 220px;
+        max-height: 220px;
+    }
+    .partner-image img {
+        display: block;
+
+        width: auto;
+        max-width: 100%;
+        max-height: 420px;
+
+        margin: 0 auto;
+
+        object-fit: contain;
+        border-radius: 20px;
+    }
+
+   .contact-right img {
+        display: block;
+
+        width: auto;
+        max-width: 100%;
+        max-height: 420px;
+
+        margin: 20px auto 15px;
+
+        object-fit: contain;
+        border-radius: 12px;
+    }
+
+    .product-card img {
+        height: 180px;
+    }
+
+    .solution-image img {
+        max-height: 250px;
+    }
+
+    .slide {
+        min-width: 100%;
+        height: 200px;
+    }
+
+    .slider-track {
+        gap: 10px;
+    }
+
+    .slider-btn {
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+
+    .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    min-height: 48px;
+
+    text-align: center;
+    }
+
+    .zalo-btn,
+    .facebook-btn,
+    .tiktok-btn {
+        width: 46px;
+        right: 12px;
+    }
+
+    .zalo-btn {
+        bottom: 82px;
+    }
+
+    .facebook-btn {
+        bottom: 142px;
+    }
+
+    .tiktok-btn {
+        bottom: 202px;
+    }
+
+    #backToTop {
+        width: 42px;
+        height: 42px;
+        right: 12px;
+        bottom: 15px;
+    }
+
+    .contact-left,
+    .contact-right {
+        width: 100%;
+    }
+
+    .contact-right {
+        display: flex;
+        justify-content: center;
+    }
+
+    .contact-left {
+        text-align: center;
+    }
+
+    .about-desc {
+
+    max-width: 100%;
+
+    margin-top: 24px;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+}
+}
+
+/* SMALL PHONE */
+
+@media (max-width: 480px) {
+
+    section {
+        padding: 40px 16px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .banner {
+        padding: 70px 16px 50px;
+    }
+
+    .product-card,
+    .product-item,
+    .partner-item,
+    .contact-box,
+    .vision-card,
+    .card {
+        padding: 18px;
+    }
+
+    .slide {
+        height: 170px;
+    }
+
+    /* Slider */
+
+    
+
+    .slider-btn{
+        
+        display:flex;
+
+        align-items:center;
+        justify-content:center;
+
+        width:34px;
+        height:34px;
+
+        padding:0;
+
+        font-size:15px;
+
+        background:rgba(255,255,255,.75);
+    }
+
+    .prev{
+        left:6px;
+    }
+
+    .next{
+        right:6px;
+    }
+
+    /* Image */
+
+    .founder-image img,
+    .partner-image img,
+    .contact-right img {
+        max-height: 260px;
+    }
+
+}
