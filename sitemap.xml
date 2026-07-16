@@ -1,37 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    <url>
-        <loc>https://www.thanhphatphat.com/</loc>
-    </url>
-
-    <url>
-        <loc>https://www.thanhphatphat.com/products/ly-giay.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.thanhphatphat.com/products/ly-nhua.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.thanhphatphat.com/products/tho-giay.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.thanhphatphat.com/products/khan-giay.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.thanhphatphat.com/products/tui-bao-bi.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.thanhphatphat.com/products/tem-nhan.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.thanhphatphat.com/products/raider.html</loc>
-    </url>
-
+  <url>
+    <loc>https://www.thanhphatphat.com/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.thanhphatphat.com/products/ly-giay.html</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.thanhphatphat.com/products/ly-nhua.html</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.thanhphatphat.com/products/tho-giay.html</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.thanhphatphat.com/products/tui-bao-bi.html</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.thanhphatphat.com/products/tem-nhan.html</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.thanhphatphat.com/products/khan-giay.html</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.thanhphatphat.com/products/raider.html</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

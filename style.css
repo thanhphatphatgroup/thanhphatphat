@@ -31,6 +31,19 @@ h2 {
     margin-bottom: 20px;
 }
 
+/* GỘP MARGIN-BOTTOM LẶP LẠI CHO CÁC SECTION */
+.about h2,
+.founder h2,
+.vision h2,
+.core h2,
+.products h2,
+.solution h2,
+.process h2,
+.partner h2,
+.contact h2 {
+    margin-bottom: 35px;
+}
+
 h3 {
     margin-bottom: 8px;
 }
@@ -119,10 +132,6 @@ li {
 
 /* ABOUT */
 
-.about h2 {
-    margin-bottom: 35px;
-}
-
 .about {
     background: #f5cfcf;
 }
@@ -152,10 +161,6 @@ li {
 
 /* FOUNDER */
 
-.founder h2 {
-    margin-bottom: 35px;
-}
-
 .founder {
     background: #f5cfcf;
 }
@@ -180,10 +185,6 @@ li {
 }
 
 /* VISION */
-
-.vision h2 {
-    margin-bottom: 35px;
-}
 
 .vision {
     background: #f5cfcf;
@@ -216,10 +217,6 @@ li {
 
 /* CORE */
 
-.core h2 {
-    margin-bottom: 35px;
-}
-
 .core {
     background: #eee;
 }
@@ -249,46 +246,11 @@ li {
 
 /* PRODUCTS */
 
-.products h2 {
-    margin-bottom: 35px;
-}
-
 .products {
     background: #f7f7f7;
 }
 
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
-}
-
-.product-card {
-    padding: 25px;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    transition: 0.3s;
-}
-
-.product-card:hover {
-    transform: translateY(-6px);
-}
-
-.product-card img {
-    height: 220px;
-    margin-bottom: 15px;
-    padding: 10px;
-    object-fit: contain;
-    background: #f3f3f3;
-    border-radius: 12px;
-}
-
 /* SOLUTION */
-
-.solution h2 {
-    margin-bottom: 35px;
-}
 
 .solution {
     background: #f5e8a3;
@@ -310,10 +272,6 @@ li {
 }
 
 /* PROCESS */
-
-.process h2 {
-    margin-bottom: 35px;
-}
 
 .process {
     background: #f5e8a3;
@@ -340,10 +298,6 @@ li {
 }
 
 /* PARTNER */
-
-.partner h2 {
-    margin-bottom: 35px;
-}
 
 .partner {
     background: #f7f7f7;
@@ -383,10 +337,6 @@ li {
 }
 
 /* CONTACT */
-
-.contact h2 {
-    margin-bottom: 35px;
-}
 
 .contact {
     background: #e7b8b0;
@@ -447,7 +397,7 @@ li {
     flex: 1 1 350px;
 }
 
-/* PRODUCT DETAIL */
+/* PRODUCT DETAIL & ACTIONS */
 
 .product-item {
     padding: 25px;
@@ -469,6 +419,10 @@ li {
 
 .product-item ul {
     margin-top: 10px;
+}
+
+.product-actions {
+    margin-top: 20px;
 }
 
 /* SLIDER */
@@ -772,10 +726,6 @@ section + section {
         padding: 70px 60px;
     }
 
-    .product-grid {
-        gap: 30px;
-    }
-
     .partner-container,
     .contact-box,
     .solution-box,
@@ -813,7 +763,6 @@ section + section {
         gap: 30px;
     }
 
-    .product-grid,
     .process-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -880,7 +829,6 @@ section + section {
         gap: 25px;
     }
 
-    .product-grid,
     .process-grid {
         grid-template-columns: 1fr;
     }
@@ -908,10 +856,6 @@ section + section {
         margin: 20px auto 15px;
         object-fit: contain;
         border-radius: 12px;
-    }
-
-    .product-card img {
-        height: 180px;
     }
 
     .solution-image img {
@@ -1008,7 +952,6 @@ section + section {
         padding: 70px 16px 50px;
     }
 
-    .product-card,
     .product-item,
     .partner-item,
     .contact-box,

@@ -3,41 +3,121 @@
 
 <head>
 
-    <!-- HEAD -->
+    <!-- HEAD & SECURITY -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>
-        Thành Phát Phát Plastic | Ly giấy, Ly nhựa, Bao bì thực phẩm
-    </title>
+    <title>Thành Phát Phát Plastic | Ly giấy, Ly nhựa, Bao bì thực phẩm</title>
     
     <meta name="description" content="Thành Phát Phát Plastic chuyên cung cấp ly giấy, ly nhựa, thố giấy, khăn giấy, túi bao bì, tem nhãn và sản phẩm sinh học Raider. Nhận in logo theo yêu cầu, phục vụ nhà hàng, quán cà phê, trà sữa và doanh nghiệp F&B.">
       
     <meta name="keywords" content="ly giấy, ly nhựa, bao bì thực phẩm, cốc giấy, ly nhựa dùng một lần, in ly giấy, ly giấy giá rẻ, ly nhựa trà sữa, ly nhựa đựng nước, bao bì nhựa, ly giấy 500ml, ly giấy 700ml, ly nhựa PP, ly nhựa PET">
-    
-    <!-- OPEN GRAPH -->
-    <meta property="og:locale" content="vi_VN">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#007bff">
 
     <link rel="canonical" href="https://www.thanhphatphat.com/">
 
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="vi_VN">
     <meta property="og:title" content="Thành Phát Phát Plastic | Ly giấy, Ly nhựa, Bao bì thực phẩm">
-
     <meta property="og:description" content="Chuyên cung cấp ly giấy, ly nhựa, thố giấy, khăn giấy, túi bao bì, tem nhãn và sản phẩm sinh học Raider.">
-
     <meta property="og:url" content="https://www.thanhphatphat.com/">
-
     <meta property="og:image" content="https://www.thanhphatphat.com/images/banner.webp">
-
+    <meta property="og:image:alt" content="Thành Phát Phát Plastic - Giải pháp bao bì chuyên nghiệp">
     <meta property="og:site_name" content="Thành Phát Phát Plastic">
 
-    <meta property="og:locale" content="vi_VN">
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Thành Phát Phát Plastic | Ly giấy, Ly nhựa, Bao bì thực phẩm">
+    <meta name="twitter:description" content="Chuyên cung cấp ly giấy, ly nhựa, thố giấy, khăn giấy, túi bao bì, tem nhãn và sản phẩm sinh học Raider.">
+    <meta name="twitter:image" content="https://www.thanhphatphat.com/images/banner.webp">
 
-    <!-- Tải trước ảnh banner để tối ưu chỉ số LCP trên Mobile -->
+    <!-- PRELOAD ASSETS (Tối ưu LCP & CLS) -->
     <link rel="preload" as="image" href="images/banner.webp" fetchpriority="high">  
-    <!-- STYLES -->
+    <link rel="preload" as="image" href="images/logo.png" type="image/png">
+
+    <!-- STYLES & FAVICON -->
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="images/logo.png">
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
+
+    <!-- FULL STRUCTURED DATA (JSON-LD: Organization + LocalBusiness + WebSite) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.thanhphatphat.com/#organization",
+          "name": "CÔNG TY TNHH TMDV SẢN XUẤT THÀNH PHÁT PHÁT",
+          "alternateName": "Thành Phát Phát Plastic",
+          "url": "https://www.thanhphatphat.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.thanhphatphat.com/images/logo.png"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+84979738939",
+            "contactType": "customer service",
+            "areaServed": "VN",
+            "availableLanguage": "Vietnamese"
+          },
+          "sameAs": [
+            "https://www.facebook.com/share/189bfVUHbx/",
+            "https://www.tiktok.com/@raider_8939"
+          ]
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://www.thanhphatphat.com/#localbusiness",
+          "name": "Thành Phát Phát Plastic",
+          "image": "https://www.thanhphatphat.com/images/banner.webp",
+          "logo": "https://www.thanhphatphat.com/images/logo.png",
+          "telephone": "0979738939",
+          "email": "thanhphatphatplastic@gmail.com",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "25/15 Âu Cơ, Phường Hòa Bình",
+            "addressLocality": "Thành phố Hồ Chí Minh",
+            "addressRegion": "TP.HCM",
+            "addressCountry": "VN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 10.768,
+            "longitude": 106.647
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ],
+          "areaServed": {
+            "@type": "Country",
+            "name": "Vietnam"
+          },
+          "hasMap": "https://maps.google.com/?q=25/15+Au+Co+Hoa+Binh+Ho+Chi+Minh"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.thanhphatphat.com/#website",
+          "url": "https://www.thanhphatphat.com/",
+          "name": "Thành Phát Phát Plastic",
+          "publisher": {
+            "@id": "https://www.thanhphatphat.com/#organization"
+          },
+          "inLanguage": "vi-VN"
+        }
+      ]
+    }
+    </script>
 
 </head>
 
@@ -117,7 +197,7 @@
                 </div>
 
                 <div class="founder-image reveal">
-                    <img src="images/founder.webp" alt="người sáng lập">
+                    <img src="images/founder.webp" alt="người sáng lập" loading="lazy" decoding="async" width="320" height="320">
                 </div>
 
             </div>
@@ -186,7 +266,7 @@
 
                 <div class="core-item">
                     <div class="icon">
-                        <img src="icons/quality.png" alt="icon chất lượng" width="45" height="45">
+                        <img src="icons/quality.png" alt="icon chất lượng" width="45" height="45" loading="lazy">
                     </div>
                     <div class="core-text">
                         <h3>Chất lượng</h3>
@@ -196,7 +276,7 @@
 
                 <div class="core-item">
                     <div class="icon">
-                        <img src="icons/handshake.png" alt="icon uy tín" width="45" height="45">
+                        <img src="icons/handshake.png" alt="icon uy tín" width="45" height="45" loading="lazy">
                     </div>
                     <div class="core-text">
                         <h3>Uy tín</h3>
@@ -206,7 +286,7 @@
 
                 <div class="core-item">
                     <div class="icon">
-                        <img src="icons/conversation.png" alt="icon hợp tác" width="45" height="45">
+                        <img src="icons/conversation.png" alt="icon hợp tác" width="45" height="45" loading="lazy">
                     </div>
                     <div class="core-text">
                         <h3>Hợp tác lâu dài</h3>
@@ -225,7 +305,7 @@
             <h2>Danh mục Sản phẩm</h2>
             <p>Chúng tôi cung cấp đa dạng sản phẩm phục vụ doanh nghiệp và cá nhân.</p>
 
-            <!-- ===================== LY GIẤY ===================== -->
+            <!-- LY GIẤY -->
             <div class="product-item reveal">
 
                 <div class="slider" data-folder="ly-giay"></div>
@@ -243,7 +323,7 @@
                     <li>Dễ kết hợp với nắp giấy hoặc nắp nhựa tiện lợi</li>
                 </ul>
 
-                <div style="margin-top:20px;">
+                <div class="product-actions">
                     <a href="products/ly-giay.html" class="btn primary">
                         Xem bộ sưu tập →
                     </a>
@@ -252,7 +332,7 @@
             </div>
 
 
-            <!-- ===================== LY NHỰA ===================== -->
+            <!-- LY NHỰA -->
             <div class="product-item reveal">
 
                 <div class="slider" data-folder="ly-nhua"></div>
@@ -270,7 +350,7 @@
                     <li>Giá thành tối ưu cho kinh doanh số lượng lớn</li>
                 </ul>
 
-                <div style="margin-top:20px;">
+                <div class="product-actions">
                     <a href="products/ly-nhua.html" class="btn primary">
                         Xem bộ sưu tập →
                     </a>
@@ -279,7 +359,7 @@
             </div>
 
 
-            <!-- ===================== THỐ GIẤY ===================== -->
+            <!-- THỐ GIẤY -->
             <div class="product-item reveal">
 
                 <div class="slider" data-folder="tho-giay"></div>
@@ -306,7 +386,7 @@
             </div>
 
 
-            <!-- ===================== TÚI BAO BÌ ===================== -->
+            <!-- TÚI BAO BÌ -->
             <div class="product-item reveal">
 
                 <div class="slider" data-folder="tui-bao-bi"></div>
@@ -333,7 +413,7 @@
             </div>
 
 
-            <!-- ===================== TEM NHÃN ===================== -->
+            <!-- TEM NHÃN -->
             <div class="product-item reveal">
 
                 <div class="slider" data-folder="tem"></div>
@@ -350,7 +430,7 @@
                     <li>Số lượng linh hoạt, đáp ứng nhu cầu từ nhỏ đến lớn</li>
                     <li>Giải pháp tem nhãn chuyên nghiệp cho doanh nghiệp</li>
                 </ul>
-                
+
                 <div class="product-actions">
                     <a href="products/tem-nhan.html" class="btn primary">
                         Xem bộ sưu tập →
@@ -359,7 +439,7 @@
 
             </div>        
                 
-            <!-- ===================== KHĂN GIẤY ===================== -->
+            <!-- KHĂN GIẤY -->
             <div class="product-item reveal">
 
                 <div class="slider" data-folder="khan-giay"></div>
@@ -386,10 +466,9 @@
             </div>
 
             
-            <!-- ===================== RAIDER ===================== -->
+            <!-- RAIDER -->
             <div class="product-item reveal">
 
-                <!-- 🔥 SLIDER -->
                 <div class="slider" data-folder="raider"></div>
 
                 <h3>SẢN PHẨM SINH HỌC RAIDER</h3>
@@ -424,7 +503,7 @@
             <div class="solution-box reveal">
 
                 <div class="solution-image">
-                    <img src="images/solution.webp" alt="giải pháp bao bì">
+                    <img src="images/solution.webp" alt="giải pháp bao bì" loading="lazy" decoding="async">
                 </div>
 
                 <div class="solution-content">
@@ -469,7 +548,7 @@
 
                 <div class="process-item reveal">
                     <div class="process-bar">
-                        <img src="icons/consult.png" alt="Tư vấn">
+                        <img src="icons/consult.png" alt="Tư vấn" width="40" height="40" loading="lazy">
                     </div>
                     <h3>Bước 1: Tư vấn</h3>
                     <p>Tư vấn sản phẩm phù hợp với nhu cầu và ngân sách của khách hàng</p>
@@ -477,7 +556,7 @@
 
                 <div class="process-item reveal">
                     <div class="process-bar">
-                        <img src="icons/tag.png" alt="Báo giá">
+                        <img src="icons/tag.png" alt="Báo giá" width="40" height="40" loading="lazy">
                     </div>
                     <h3>Bước 2: Báo giá</h3>
                     <p>Đưa ra báo giá chi tiết và minh bạch cho từng loại sản phẩm</p>
@@ -485,7 +564,7 @@
 
                 <div class="process-item reveal">
                     <div class="process-bar">
-                        <img src="icons/warehouse.png" alt="Chuẩn bị hàng">
+                        <img src="icons/warehouse.png" alt="Chuẩn bị hàng" width="40" height="40" loading="lazy">
                     </div>
                     <h3>Bước 3: Chuẩn bị</h3>
                     <p>Chuẩn bị hàng hóa theo đúng yêu cầu và cam kết chất lượng</p>
@@ -493,7 +572,7 @@
 
                 <div class="process-item reveal">
                     <div class="process-bar">
-                        <img src="icons/delivery.png" alt="Giao hàng">
+                        <img src="icons/delivery.png" alt="Giao hàng" width="40" height="40" loading="lazy">
                     </div>
                     <h3>Bước 4: Giao hàng</h3>
                     <p>Giao hàng đúng hẹn, hỗ trợ tận tình sau bán hàng</p>
@@ -536,7 +615,7 @@
                 </div>
 
                 <div class="partner-image reveal">
-                    <img src="images/partner.webp" alt="khách hàng">
+                    <img src="images/partner.webp" alt="khách hàng" loading="lazy" decoding="async">
                 </div>
 
             </div>
@@ -596,7 +675,7 @@
 
                 <div class="contact-right">
 
-                    <img src="images/contact.webp" alt="văn phòng">
+                    <img src="images/contact.webp" alt="văn phòng" loading="lazy" decoding="async">
 
                     <div class="contact-card">
 
@@ -627,21 +706,21 @@
 
     <!-- ZALO -->
     <a href="https://zalo.me/0979738939" class="zalo-btn" target="_blank" rel="noopener">
-        <img src="images/zalo.png" alt="zalo">
+        <img src="images/zalo.png" alt="zalo" width="50" height="50">
     </a>
 
     <!-- FACEBOOK -->
     <a href="https://www.facebook.com/share/189bfVUHbx/" class="facebook-btn" target="_blank" rel="noopener">
-        <img src="images/facebook.png" alt="facebook">
+        <img src="images/facebook.png" alt="facebook" width="50" height="50">
     </a>
 
     <!-- TIKTOK -->
     <a href="https://www.tiktok.com/@raider_8939?is_from_webapp=1&sender_device=pc" class="tiktok-btn" target="_blank" rel="noopener">
-        <img src="images/tiktok.png" alt="tiktok">
+        <img src="images/tiktok.png" alt="tiktok" width="50" height="50">
     </a>
 
     <!-- BACK TO TOP -->
-    <button id="backToTop">
+    <button id="backToTop" aria-label="Trở về đầu trang">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M12 5L5 12H9V19H15V12H19L12 5Z" fill="white" />
         </svg>
@@ -650,7 +729,7 @@
 
     <!-- IMAGE ZOOM -->
     <div id="zoomOverlay">
-        <img id="zoomImg">
+        <img id="zoomImg" alt="Phóng to hình ảnh">
     </div>
 
 </body>
