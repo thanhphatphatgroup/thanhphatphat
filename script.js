@@ -9,7 +9,6 @@ function debounce(func, wait) {
 
 // ===================== DOM READY =====================
 window.addEventListener("DOMContentLoaded", function () {
-
     const reveals = document.querySelectorAll(".reveal");
     const backToTop = document.getElementById("backToTop");
 
@@ -19,7 +18,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
         function handleScroll() {
             const windowHeight = window.innerHeight;
-
             // REVEAL
             reveals.forEach((el) => {
                 if (el.getBoundingClientRect().top < windowHeight - 50) {
