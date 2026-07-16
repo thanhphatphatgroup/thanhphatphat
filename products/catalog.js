@@ -8,14 +8,40 @@ const folder = catalog ? catalog.dataset.folder : null;
 
 let images = [];
 let currentIndex = 0;
-const batchSize = 6; // Mỗi lần lướt xuống sẽ sổ ra 6 ảnh
+const batchSize = 6;
 let loading = false;
 
+// TẠO 3 CỘT MASONRY
+let columns = [];
+
+function createColumns() {
+    if (!catalog) return;
+    catalog.innerHTML = "";
+    columns = [];
+
+    // Tạo 3 cột Flexbox
+    for (let i = 0; i < 3; i++) {
+        const col = document.createElement("div");
+        col.className = "masonry-col";
+        catalog.appendChild(col);
+        columns.push(col);
+    }
+}
+
+// LẤY CỘT CÓ CHIỀU CAO THẤP NHẤT ĐỂ CHÈN ẢNH
+function getShortestColumn() {
+    return columns.reduce((minCol, col) => {
+        return col.offsetHeight < minCol.offsetHeight ? col : minCol;
+    }, columns[0]);
+}
+
 // =========================
-// LOAD JSON & CHECK
+// LOAD JSON
 // =========================
 async function init() {
     if (!catalog || !folder) return;
+
+    createColumns();
 
     try {
         const response = await fetch(`../images/products/${folder}/gallery.json`);
@@ -28,7 +54,7 @@ async function init() {
 }
 
 // =========================
-// LOAD BATCH & TRIGGER REVEAL
+// LOAD BATCH
 // =========================
 function loadBatch() {
     if (loading || currentIndex >= images.length) return;
@@ -50,22 +76,17 @@ function loadBatch() {
 
         img.onload = function () {
             const item = document.createElement("div");
-            
-            // Thêm class reveal để chạy hiệu ứng đồng bộ trang chủ
-            item.className = "catalog-item reveal";
+            item.className = "catalog-item reveal show";
 
             item.innerHTML = `
                 <img src="${img.src}" loading="lazy" alt="Sản phẩm Thành Phát Phát">
             `;
 
-            catalog.appendChild(item);
+            // Chèn ảnh vào cột ngắn nhất
+            const targetCol = getShortestColumn();
+            targetCol.appendChild(item);
 
-            // Cho hiệu ứng hiển thị ngay khi nạp ảnh xong
-            setTimeout(() => {
-                item.classList.add("show");
-            }, 50);
-
-            // Xử lý Zoom ảnh
+            // Zoom ảnh
             item.querySelector("img").addEventListener("click", function () {
                 if (zoomImg && overlay) {
                     zoomImg.src = this.src;
@@ -94,7 +115,7 @@ function loadBatch() {
 function checkViewport() {
     if (!loadMore) return;
     const rect = loadMore.getBoundingClientRect();
-    if (rect.top <= window.innerHeight + 300) {
+    if (rect.top <= window.innerHeight + 400) {
         loadBatch();
     }
 }
@@ -113,9 +134,7 @@ if (loadMore) {
     observer.observe(loadMore);
 }
 
-// =========================
 // ZOOM OVERLAY
-// =========================
 if (overlay) {
     overlay.addEventListener("click", function () {
         overlay.classList.remove("show");
