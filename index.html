@@ -34,14 +34,15 @@
     <meta name="twitter:description" content="Chuyên cung cấp ly giấy, ly nhựa, thố giấy, khăn giấy, túi bao bì, tem nhãn và sản phẩm sinh học Raider.">
     <meta name="twitter:image" content="https://www.thanhphatphat.com/images/banner.webp">
 
-    <!-- PRELOAD ASSETS (Tối ưu LCP & CLS) -->
-    <link rel="preload" as="image" href="images/banner.webp" fetchpriority="high">  
+    <!-- PRELOAD ASSETS (TỐI ƯU LCP BANNER ĐẦU TRANG) -->
+    <link rel="preload" as="image" href="images/banner.webp" type="image/webp" fetchpriority="high">  
+
     <!-- STYLES & FAVICON -->
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="images/logo.png">
     <link rel="stylesheet" href="style.css?v=3">
 
-    <!-- FULL STRUCTURED DATA (JSON-LD: Organization + LocalBusiness + WebSite) -->
+    <!-- FULL STRUCTURED DATA (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -138,7 +139,7 @@
         </section>
 
 
-        <!-- ===================== GIỚI THIỆU ===================== -->
+        <!-- GIỚI THIỆU -->
         <section class="about">
 
             <h2 class="reveal">Giới thiệu Công ty</h2>
@@ -501,7 +502,7 @@
             <div class="solution-box reveal">
 
                 <div class="solution-image">
-                    <img src="images/solution.webp" alt="giải pháp bao bì" loading="lazy" decoding="async">
+                    <img src="images/solution.webp" alt="giải pháp bao bì" loading="lazy" decoding="async" width="600" height="600">
                 </div>
 
                 <div class="solution-content">
@@ -613,7 +614,7 @@
                 </div>
 
                 <div class="partner-image reveal">
-                    <img src="images/partner.webp" alt="khách hàng" loading="lazy" decoding="async">
+                    <img src="images/partner.webp" alt="khách hàng" loading="lazy" decoding="async" width="500" height="750">
                 </div>
 
             </div>
@@ -673,7 +674,7 @@
 
                 <div class="contact-right">
 
-                    <img src="images/contact.webp" alt="văn phòng" loading="lazy" decoding="async">
+                    <img src="images/contact.webp" alt="văn phòng" loading="lazy" decoding="async" width="500" height="520">
 
                     <div class="contact-card">
 
@@ -704,17 +705,17 @@
 
     <!-- ZALO -->
     <a href="https://zalo.me/0979738939" class="zalo-btn" target="_blank" rel="noopener">
-        <img src="images/zalo.png" alt="zalo" width="50" height="50">
+        <img src="images/zalo.png" alt="zalo" width="50" height="50" loading="eager" fetchpriority="high">
     </a>
 
     <!-- FACEBOOK -->
     <a href="https://www.facebook.com/share/189bfVUHbx/" class="facebook-btn" target="_blank" rel="noopener">
-        <img src="images/facebook.png" alt="facebook" width="50" height="50">
+        <img src="images/facebook.png" alt="facebook" width="50" height="50" loading="eager" fetchpriority="high">
     </a>
 
     <!-- TIKTOK -->
     <a href="https://www.tiktok.com/@raider_8939?is_from_webapp=1&sender_device=pc" class="tiktok-btn" target="_blank" rel="noopener">
-        <img src="images/tiktok.png" alt="tiktok" width="50" height="50">
+        <img src="images/tiktok.png" alt="tiktok" width="50" height="50" loading="eager" fetchpriority="high">
     </a>
 
     <!-- BACK TO TOP -->
