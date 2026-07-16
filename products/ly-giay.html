@@ -2,290 +2,247 @@
 <html lang="vi">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-Ly Giấy In Logo Theo Yêu Cầu | Thành Phát Phát Plastic
-</title>
+    <title>Ly Giấy In Logo Theo Yêu Cầu | Thành Phát Phát Plastic</title>
 
-<meta name="description"
-content="Ly giấy in logo theo yêu cầu với nhiều dung tích từ 4oz đến 22oz. Phù hợp quán cà phê, trà sữa, nhà hàng và doanh nghiệp F&B. Thành Phát Phát Plastic nhận thiết kế và sản xuất theo yêu cầu.">
+    <meta name="description" content="Ly giấy in logo theo yêu cầu với nhiều dung tích từ 4oz đến 22oz. Phù hợp quán cà phê, trà sữa, nhà hàng và doanh nghiệp F&B. Thành Phát Phát Plastic nhận thiết kế và sản xuất theo yêu cầu.">
 
-<link rel="stylesheet" href="../style.css">
+    <!-- FAVICON (LOGO TRÊN TAB TRÌNH DUYỆT) -->
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
 
-<style>
+    <link rel="stylesheet" href="../style.css">
 
-.catalog-page{
-    background:#fafafa;
-    min-height:100vh;
-}
+    <style>
+        .catalog-page {
+            background: #fafafa;
+            min-height: 100vh;
+        }
 
-/* ===== HERO BANNER ===== */
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-top:25px;
-}
+        /* ===== HERO BANNER ===== */
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
 
-.hero-banner{
+        .hero-banner {
+            height: 550px;
+            background: linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)), url("../images/banner.webp");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-    height:550px;
+        .hero-overlay {
+            max-width: 900px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
-    background:
-    linear-gradient(
-    rgba(0,0,0,.45),
-    rgba(0,0,0,.45)
-    ),
-    url("../images/banner.webp");
+        .hero-banner h1 {
+            color: #fff;
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
 
-    background-size:cover;
-    background-position:center;
+        .hero-banner p {
+            color: #fff;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
 
-    text-align:center;
-}
+        .stat-box {
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(10px);
+            padding: 18px 25px;
+            border-radius: 15px;
+            min-width: 170px;
+        }
 
-.hero-overlay{
-    max-width:900px;
-    width:100%;
-    padding:20px;
-    box-sizing:border-box;
-}
+        .stat-box strong {
+            display: block;
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
 
-.hero-banner h1{
-    color:#fff;
-    font-size:42px;
-    line-height:1.2;
-    margin-bottom:15px;
-}
+        .stat-box span {
+            font-size: 14px;
+        }
 
-.hero-banner p{
-    color:#fff;
-    font-size:18px;
-    max-width:700px;
-    margin:0 auto 30px;
-}
+        /* ===== MASONRY (PINTEREST LAYOUT) ===== */
+        .catalog-grid {
+            max-width: 1400px;
+            margin: auto;
+            padding: 0 40px 80px;
+            column-count: 3; /* Chia làm 3 cột */
+            column-gap: 20px;
+        }
 
-.hero-stats{
+        .catalog-item {
+            break-inside: avoid; /* Ngăn cắt đôi ảnh giữa các cột */
+            margin-bottom: 20px; /* Khoảng cách cách nhau theo chiều dọc */
+            display: inline-block;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+            cursor: pointer;
+            transition: .3s;
+        }
 
-    display:flex;
-    justify-content:center;
-    gap:20px;
+        .catalog-item:hover {
+            transform: translateY(-5px);
+        }
 
-    margin-bottom:35px;
-}
+        .catalog-item img {
+            width: 100%;
+            display: block;
+            transition: .35s;
+        }
 
-.stat-box{
+        .catalog-item:hover img {
+            transform: scale(1.03);
+        }
 
-    background:rgba(255,255,255,.15);
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media(max-width:768px) {
+            .hero-banner {
+                height: auto;
+                padding: 70px 15px;
+            }
 
-    backdrop-filter:blur(10px);
+            .hero-overlay {
+                width: 100%;
+                padding: 10px;
+            }
 
-    padding:18px 25px;
+            .hero-banner h1 {
+                font-size: 28px;
+                line-height: 1.25;
+            }
 
-    border-radius:15px;
+            .hero-banner p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
 
-    min-width:170px;
-}
+            .hero-stats {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 10px;
+                width: 100%;
+            }
 
-.stat-box strong{
-    display:block;
-    font-size:22px;
-    margin-bottom:6px;
-}
+            .stat-box {
+                min-width: unset;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 15px;
+            }
 
-.stat-box span{
-    font-size:14px;
-}
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
 
-.catalog-header{
-    text-align:center;
-    padding:60px 20px;
-}
+            .hero-buttons a {
+                width: 100%;
+                max-width: 320px;
+            }
 
-.catalog-header h1{
-    margin-bottom:15px;
-}
+            .catalog-grid {
+                padding: 20px 12px 40px;
+                column-count: 2; /* 2 cột trên điện thoại */
+                column-gap: 10px;
+            }
 
-.catalog-header p{
-    max-width:700px;
-    margin:auto;
-}
-
-.catalog-actions{
-    margin-top:25px;
-}
-
-.catalog-grid{
-    max-width:1400px;
-    margin:auto;
-    padding:0 40px 80px;
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.catalog-item{
-    overflow:hidden;
-    border-radius:18px;
-    background:#fff;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    cursor:pointer;
-    transition:.3s;
-}
-
-.catalog-item:hover{
-    transform:translateY(-5px);
-}
-
-.catalog-item img{
-    width:100%;
-    display:block;
-    transition:.35s;
-}
-
-.catalog-item:hover img{
-    transform:scale(1.03);
-}
-
-@media(max-width:768px){
-
-    .hero-banner{
-        height:auto;
-        padding:70px 15px;
-    }
-
-    .hero-overlay{
-        width:100%;
-        padding:10px;
-    }
-
-    .hero-banner h1{
-        font-size:28px;
-        line-height:1.25;
-    }
-
-    .hero-banner p{
-        font-size:16px;
-        margin-bottom:20px;
-    }
-
-    .hero-stats{
-        display:grid;
-        grid-template-columns:1fr;
-        gap:10px;
-        width:100%;
-    }
-
-    .stat-box{
-        min-width:unset;
-        width:100%;
-        box-sizing:border-box;
-        padding:15px;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-        align-items:center;
-    }
-
-    .hero-buttons a{
-        width:100%;
-        max-width:320px;
-    }
-
-    .catalog-grid{
-        padding:20px 12px 40px;
-        grid-template-columns:repeat(2,1fr);
-        gap:10px;
-    }
-
-}
-
-</style>
-
+            .catalog-item {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 
 <body class="catalog-page">
 
-<section class="hero-banner">
+    <!-- HERO BANNER -->
+    <section class="hero-banner">
+        <div class="hero-overlay reveal show">
+            <h1>LY GIẤY IN LOGO THEO YÊU CẦU</h1>
+            <p>Bộ sưu tập các mẫu ly giấy được thực hiện bởi Thành Phát Phát Plastic.</p>
 
-    <div class="hero-overlay">
-
-        <h1>LY GIẤY IN LOGO THEO YÊU CẦU</h1>
-
-        <p>
-            Bộ sưu tập các mẫu ly giấy được thực hiện bởi
-            Thành Phát Phát Plastic.
-        </p>
-
-        <div class="hero-stats">
-
-            <div class="stat-box">
-                <strong>100+</strong>
-                <span>Mẫu thiết kế</span>
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <strong>100+</strong>
+                    <span>Mẫu thiết kế</span>
+                </div>
+                <div class="stat-box">
+                    <strong>4oz - 22oz</strong>
+                    <span>Nhiều dung tích</span>
+                </div>
+                <div class="stat-box">
+                    <strong>OEM</strong>
+                    <span>In logo riêng</span>
+                </div>
             </div>
 
-            <div class="stat-box">
-                <strong>4oz - 22oz</strong>
-                <span>Nhiều dung tích</span>
+            <div class="hero-buttons">
+                <a href="#catalog" class="btn primary">Xem bộ sưu tập</a>
+                <a href="../index.html" class="btn secondary">← Trang chủ</a>
             </div>
-
-            <div class="stat-box">
-                <strong>OEM</strong>
-                <span>In logo riêng</span>
-            </div>
-
         </div>
+    </section>
 
-        <div class="hero-buttons">
+    <!-- CATALOG GRID -->
+    <section>
+        <div id="catalog" class="catalog-grid" data-folder="ly-giay"></div>
+        <div id="loadMore"></div>
+    </section>
 
-            <a href="#catalog" class="btn primary">
-                Xem bộ sưu tập
-            </a>
-
-            <a href="../index.html" class="btn secondary">
-                ← Trang chủ
-            </a>
-
-        </div>
-
+    <!-- ZOOM OVERLAY -->
+    <div id="zoomOverlay">
+        <img id="zoomImg" alt="Phóng to ảnh">
     </div>
 
-</section>
+    <!-- FLOATING BUTTONS (ZALO, FACEBOOK, TIKTOK) -->
+    <a href="https://zalo.me/0979738939" class="zalo-btn" target="_blank" rel="noopener">
+        <img src="../images/zalo.png" alt="zalo">
+    </a>
+    <a href="https://www.facebook.com/share/189bfVUHbx/" class="facebook-btn" target="_blank" rel="noopener">
+        <img src="../images/facebook.png" alt="facebook">
+    </a>
+    <a href="https://www.tiktok.com/@raider_8939?is_from_webapp=1&sender_device=pc" class="tiktok-btn" target="_blank" rel="noopener">
+        <img src="../images/tiktok.png" alt="tiktok">
+    </a>
 
-<section>
+    <!-- BACK TO TOP -->
+    <button id="backToTop" aria-label="Trở về đầu trang">↑</button>
 
-   <div
-    id="catalog"
-    class="catalog-grid"
-    data-folder="ly-giay">
-
-    </div>
-
-    <div id="loadMore"></div>
-
-</section>
-
-<div id="zoomOverlay">
-    <img id="zoomImg">
-</div>
-
-<script>
-window.PRODUCT_PAGE = true;
-</script>
-
-<script src="../script.js"></script>
-<script src="catalog.js"></script>
-
-<button id="backToTop">↑</button>
+    <!-- SCRIPTS -->
+    <script>
+        window.PRODUCT_PAGE = true;
+    </script>
+    <script src="../script.js"></script>
+    <script src="catalog.js"></script>
 
 </body>
 </html>
