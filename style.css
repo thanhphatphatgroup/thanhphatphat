@@ -1,10 +1,9 @@
 /* ==================================================
-   STYLE: EUROPEAN LUXURY FOREST GREEN (FULL 880+ LINES)
+   STYLE: EUROPEAN LUXURY FOREST GREEN
    BRAND: THÀNH PHÁT PHÁT PLASTIC
 ================================================== */
 
 /* RESET */
-
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +22,7 @@
 }
 
 /* ==================================================
-   BỘ MÃ DARK MODE & NÚT CHUYỂN GIAO DIỆN (ĐÃ NỔI BẬT KHỐI & SÁNG ICON)
+   BỘ MÃ DARK MODE & NÚT CHUYỂN GIAO DIỆN
 ================================================== */
 
 /* THEME DARK MODE */
@@ -145,7 +144,6 @@ img {
 }
 
 /* GLOBAL */
-
 section {
     padding: 90px 120px;
 }
@@ -205,7 +203,6 @@ li {
 }
 
 /* BUTTON - LUXURY GREEN STYLE */
-
 .btn {
     display: inline-block;
     padding: 14px 34px;
@@ -244,7 +241,6 @@ li {
 }
 
 /* BANNER HERO */
-
 .banner {
     position: relative;
     display: flex;
@@ -282,7 +278,6 @@ li {
 }
 
 /* ABOUT */
-
 .about {
     background: #ffffff;
 }
@@ -299,12 +294,6 @@ li {
     border: 1px solid var(--border-green);
     border-top: 4px solid var(--green-primary);
     border-radius: 16px;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(30, 58, 43, 0.08);
 }
 
 .about-desc {
@@ -319,7 +308,6 @@ li {
 }
 
 /* FOUNDER */
-
 .founder {
     background: var(--green-light-bg);
 }
@@ -335,14 +323,47 @@ li {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
+/* FIX LOGO TRONG SUỐT NỀN XÁM Ở SÁNG, NỀN TRẮNG NHỎ GỌN Ở TỐI */
+/* ==================================================
+   ĐỒNG BỘ NỀN THẺ LOGO TRẮNG BO GÓC CẢ SÁNG & TỐI
+================================================== */
+
+.founder-image {
+    flex: 0 0 280px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .founder-image img {
-    display: block;
-    width: 100%;
-    max-width: 320px;
-    max-height: 320px;
-    margin: auto;
-    object-fit: contain;
-    border-radius: 12px;
+    max-width: 100% !important;
+    max-height: 220px !important;       /* Chiều cao vừa vặn, tinh tế */
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+    border-radius: 12px !important;
+    background-color: #ffffff !important; /* Đồng bộ nền thẻ trắng tinh ở cả 2 giao diện */
+    padding: 14px 20px !important;       /* Khoảng thở xung quanh logo */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important; /* Đổ bóng nhẹ sang trọng */
+    border: 1px solid var(--border-green) !important;
+    mix-blend-mode: normal !important;   /* Tắt chế độ hòa trộn cũ */
+    transition: all 0.3s ease !important;
+}
+
+/* ĐỔI BÓNG ĐẬM HƠN TRONG DARK MODE CHO NỔI BẬT */
+[data-theme="dark"] .founder-image img {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+[data-theme="dark"] .founder-image img {
+    mix-blend-mode: normal !important;
+    background-color: #ffffff !important;
+    padding: 12px 18px !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 
 blockquote {
@@ -356,7 +377,6 @@ blockquote {
 }
 
 /* VISION */
-
 .vision {
     background: #ffffff;
 }
@@ -393,7 +413,6 @@ blockquote {
 }
 
 /* CORE */
-
 .core {
     background: var(--green-light-bg);
 }
@@ -412,11 +431,6 @@ blockquote {
     border: 1px solid var(--border-green);
     border-radius: 16px;
     flex: 1;
-    transition: 0.3s;
-}
-
-.core-item:hover {
-    border-color: var(--green-accent);
 }
 
 .icon {
@@ -432,13 +446,11 @@ blockquote {
 }
 
 /* PRODUCTS */
-
 .products {
     background: #ffffff;
 }
 
 /* SOLUTION */
-
 .solution {
     background: var(--green-light-bg);
 }
@@ -460,7 +472,6 @@ blockquote {
 }
 
 /* PROCESS */
-
 .process {
     background: var(--green-light-bg);
 }
@@ -496,7 +507,6 @@ blockquote {
 }
 
 /* PARTNER */
-
 .partner {
     background: #ffffff;
 }
@@ -535,7 +545,6 @@ blockquote {
 }
 
 /* CONTACT */
-
 .contact {
     background: var(--green-light-bg);
 }
@@ -604,18 +613,18 @@ blockquote {
     flex: 1 1 350px;
 }
 
-/* 1. CHỈ ĐỔI MÀU LINK CHỮ EMAIL TRONG PHẦN LIÊN HỆ (KHÔNG ẢNH HƯỞNG NÚT) */
+/* LINK CHỮ EMAIL TRONG PHẦN CONTACT */
 p a[href^="mailto:"] {
-    color: #1e3a2b !important; /* Giao diện sáng: chữ màu xanh rêu đậm dễ đọc */
+    color: #1e3a2b !important;
     text-decoration: underline;
     font-weight: 600;
 }
 
 [data-theme="dark"] p a[href^="mailto:"] {
-    color: #34d399 !important; /* Giao diện tối: màu xanh ngọc nổi bật */
+    color: #34d399 !important;
 }
 
-/* 2. CỐ ĐỊNH CHỮ CẢ 2 NÚT TRÊN BANNER LUÔN LÀ MÀU TRẮNG SÁNG */
+/* CỐ ĐỊNH CHỮ CẢ 2 NÚT TRÊN BANNER LUÔN LÀ MÀU TRẮNG SÁNG */
 .banner .btn.primary {
     color: #ffffff !important;
     background: var(--green-primary) !important;
@@ -635,7 +644,7 @@ p a[href^="mailto:"] {
     border-color: #ffffff !important;
 }
 
-/* 3. ĐIỀU CHỈNH NÚT SECONDARY Ở PHẦN CONTACT CỦA GIAO DIỆN SÁNG / TỐI */
+/* NÚT SECONDARY Ở PHẦN CONTACT */
 .contact .btn.secondary {
     color: #1e3a2b !important;
     background: transparent;
@@ -658,7 +667,6 @@ p a[href^="mailto:"] {
 }
 
 /* PRODUCT DETAIL & ACTIONS */
-
 .product-item {
     padding: 30px;
     margin-bottom: 50px;
@@ -666,12 +674,6 @@ p a[href^="mailto:"] {
     border: 1px solid var(--border-green);
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    transition: 0.3s;
-}
-
-.product-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(30, 58, 43, 0.08);
 }
 
 .product-item h3 {
@@ -687,15 +689,53 @@ p a[href^="mailto:"] {
     margin-top: 20px;
 }
 
-/* SLIDER (GIỮ NGUYÊN 100% CẤU TRÚC GỐC ĐỂ DRAG KÉO MƯỢT TỐI ĐA) */
+/* HIỆU ỨNG NHÍCH LÊN NHẸ (HOVER) CHO CÁC THẺ CARD */
+.card,
+.founder-container,
+.vision-card,
+.core-item,
+.solution-box,
+.process-item,
+.partner-item,
+.contact-box,
+.product-item,
+.contact-card {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease !important;
+}
 
+.card:hover,
+.founder-container:hover,
+.vision-card:hover,
+.core-item:hover,
+.solution-box:hover,
+.process-item:hover,
+.partner-item:hover,
+.contact-box:hover,
+.product-item:hover,
+.contact-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="dark"] .card:hover,
+[data-theme="dark"] .founder-container:hover,
+[data-theme="dark"] .vision-card:hover,
+[data-theme="dark"] .core-item:hover,
+[data-theme="dark"] .solution-box:hover,
+[data-theme="dark"] .process-item:hover,
+[data-theme="dark"] .partner-item:hover,
+[data-theme="dark"] .contact-box:hover,
+[data-theme="dark"] .product-item:hover,
+[data-theme="dark"] .contact-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* SLIDER */
 .slider {
     position: relative;
     overflow: hidden;
     margin-bottom: 20px;
 }
-
-/* TRACK */
 
 .slider-track {
     display: flex;
@@ -709,8 +749,6 @@ p a[href^="mailto:"] {
     cursor: grabbing;
 }
 
-/* SLIDE */
-
 .slide {
     display: flex;
     align-items: center;
@@ -722,8 +760,6 @@ p a[href^="mailto:"] {
     border: 1px solid var(--border-green);
 }
 
-/* IMAGE */
-
 .slide img,
 .slide video {
     width: 100%;
@@ -734,8 +770,6 @@ p a[href^="mailto:"] {
     -webkit-user-drag: none;
     padding: 8px;
 }
-
-/* SLIDER BUTTON */
 
 .slider-btn {
     position: absolute;
@@ -760,15 +794,8 @@ p a[href^="mailto:"] {
     transform: translateY(-50%) scale(1.1);
 }
 
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
-
-/* DOTS */
+.prev { left: 10px; }
+.next { right: 10px; }
 
 .dots {
     margin-top: 10px;
@@ -791,16 +818,12 @@ p a[href^="mailto:"] {
     border-radius: 10px;
 }
 
-/* USER SELECT */
-
-.slider,
-.slider * {
+.slider, .slider * {
     user-select: none;
     -webkit-user-select: none;
 }
 
-/* ZOOM */
-
+/* ZOOM OVERLAY */
 #zoomOverlay {
     position: fixed;
     inset: 0;
@@ -832,8 +855,7 @@ p a[href^="mailto:"] {
     transform: scale(1);
 }
 
-/* FLOAT BUTTON */
-
+/* FLOAT BUTTONS */
 .zalo-btn,
 .facebook-btn,
 .tiktok-btn {
@@ -844,19 +866,9 @@ p a[href^="mailto:"] {
     animation: floatIcon 2.5s infinite ease-in-out;
 }
 
-.zalo-btn {
-    bottom: 90px;
-}
-
-.facebook-btn {
-    bottom: 150px;
-}
-
-.tiktok-btn {
-    bottom: 210px;
-}
-
-/* FLOAT IMAGE */
+.zalo-btn { bottom: 90px; }
+.facebook-btn { bottom: 150px; }
+.tiktok-btn { bottom: 210px; }
 
 .zalo-btn img,
 .facebook-btn img,
@@ -866,15 +878,11 @@ p a[href^="mailto:"] {
     transition: 0.3s;
 }
 
-/* FLOAT HOVER */
-
 .zalo-btn:hover img,
 .facebook-btn:hover img,
 .tiktok-btn:hover img {
     transform: scale(1.15);
 }
-
-/* FLOAT CLICK */
 
 .zalo-btn:active img,
 .facebook-btn:active img,
@@ -882,22 +890,13 @@ p a[href^="mailto:"] {
     transform: scale(0.95);
 }
 
-/* FLOAT ANIMATION */
-
 @keyframes floatIcon {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-6px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
 }
 
 /* BACK TO TOP */
-
 #backToTop {
     position: fixed;
     right: 20px;
@@ -920,8 +919,6 @@ p a[href^="mailto:"] {
     transform: scale(1.1);
 }
 
-/* SCROLL */
-
 html {
     scroll-behavior: smooth;
 }
@@ -937,8 +934,6 @@ html {
     transform: none;
 }
 
-/* PERFORMANCE */
-
 .slider-track {
     will-change: transform;
     transform: translate3d(0, 0, 0);
@@ -953,8 +948,6 @@ html {
     transform: translateZ(0);
     backface-visibility: hidden;
 }
-
-/* SECTION SPACING */
 
 section + section {
     margin-top: 24px;
@@ -1037,8 +1030,6 @@ section + section {
         margin: 0 auto;
     }
 }
-
-/* PHONE */
 
 @media (max-width: 768px) {
     .buttons {
@@ -1150,17 +1141,9 @@ section + section {
         right: 12px;
     }
 
-    .zalo-btn {
-        bottom: 82px;
-    }
-
-    .facebook-btn {
-        bottom: 142px;
-    }
-
-    .tiktok-btn {
-        bottom: 202px;
-    }
+    .zalo-btn { bottom: 82px; }
+    .facebook-btn { bottom: 142px; }
+    .tiktok-btn { bottom: 202px; }
 
     #backToTop {
         width: 42px;
@@ -1190,8 +1173,6 @@ section + section {
         line-height: 1.7;
     }
 }
-
-/* SMALL PHONE */
 
 @media (max-width: 480px) {
     section {
@@ -1233,13 +1214,8 @@ section + section {
         background: rgba(255, 255, 255, .75);
     }
 
-    .prev {
-        left: 6px;
-    }
-
-    .next {
-        right: 6px;
-    }
+    .prev { left: 6px; }
+    .next { right: 6px; }
 
     .founder-image img,
     .partner-image img,
