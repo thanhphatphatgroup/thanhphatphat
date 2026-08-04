@@ -8,10 +8,12 @@ const folder = catalog ? catalog.dataset.folder : null;
 
 let images = [];
 let currentIndex = 0;
-const batchSize = 6;
+
+// TẢI THẲNG 30 THỰC THỂ ẢNH ĐỂ KHÁCH LƯỚT TẢI MẠNH
+const batchSize = 30; 
 let loading = false;
 
-// TẠO 3 CỘT MASONRY
+// TẠO CỘT FLEXBOX MASONRY (2 CỘT CHO MOBILE, 3 CỘT CHO PC)
 let columns = [];
 
 function createColumns() {
@@ -19,8 +21,10 @@ function createColumns() {
     catalog.innerHTML = "";
     columns = [];
 
-    // Tạo 3 cột Flexbox
-    for (let i = 0; i < 3; i++) {
+    // Tự động nhận diện: Nếu là điện thoại (màn dưới 768px) thì chỉ tạo 2 cột, PC tạo 3 cột
+    const colCount = window.innerWidth <= 768 ? 2 : 3;
+
+    for (let i = 0; i < colCount; i++) {
         const col = document.createElement("div");
         col.className = "masonry-col";
         catalog.appendChild(col);
@@ -45,16 +49,19 @@ async function init() {
 
     try {
         const response = await fetch(`../images/products/${folder}/gallery.json`);
+        if (!response.ok) throw new Error("CORS or 404");
         const data = await response.json();
         images = data.images || [];
-        loadBatch();
     } catch (err) {
-        console.error("Không đọc được gallery.json:", err);
+        // NẾU LỖI FILE:// HOẶC KHÔNG TẢI ĐƯỢC JSON, DÙNG DANH SÁCH DỰ PHÒNG 20 ẢNH
+        images = Array.from({ length: 20 }, (_, i) => `${folder}-${i + 1}.webp`);
     }
+
+    loadBatch();
 }
 
 // =========================
-// LOAD BATCH
+// LOAD BATCH ẢNH
 // =========================
 function loadBatch() {
     if (loading || currentIndex >= images.length) return;
@@ -65,7 +72,6 @@ function loadBatch() {
     function loadNext() {
         if (loaded >= batchSize || currentIndex >= images.length) {
             loading = false;
-            requestAnimationFrame(checkViewport);
             return;
         }
 
@@ -84,7 +90,9 @@ function loadBatch() {
 
             // Chèn ảnh vào cột ngắn nhất
             const targetCol = getShortestColumn();
-            targetCol.appendChild(item);
+            if (targetCol) {
+                targetCol.appendChild(item);
+            }
 
             // Zoom ảnh
             item.querySelector("img").addEventListener("click", function () {
@@ -101,7 +109,6 @@ function loadBatch() {
 
         img.onerror = function () {
             currentIndex++;
-            loaded++;
             loadNext();
         };
     }
@@ -109,30 +116,12 @@ function loadBatch() {
     loadNext();
 }
 
-// =========================
-// CHECK VIEWPORT & OBSERVER
-// =========================
-function checkViewport() {
-    if (!loadMore) return;
-    const rect = loadMore.getBoundingClientRect();
-    if (rect.top <= window.innerHeight + 400) {
+// LẮNG NGHE SỰ KIỆN CUỘN TRANG TRÊN ĐIỆN THOẠI ĐỂ TẢI THÊM NẾU CÒN ẢNH
+window.addEventListener("scroll", () => {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 600) {
         loadBatch();
     }
-}
-
-if (loadMore) {
-    const observer = new IntersectionObserver(
-        entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    loadBatch();
-                }
-            });
-        },
-        { rootMargin: "300px" }
-    );
-    observer.observe(loadMore);
-}
+}, { passive: true });
 
 // ZOOM OVERLAY
 if (overlay) {
