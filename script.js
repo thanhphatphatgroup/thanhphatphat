@@ -28,7 +28,7 @@ window.addEventListener("DOMContentLoaded", function () {
             });
 
             // BACK TO TOP
-            backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+            backToTop.style.display = window.scrollY > 300 ? "flex" : "none";
             isTicking = false;
         }
 
@@ -60,6 +60,34 @@ window.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+    // ==========================================
+    // CHỨC NĂNG CHUYỂN ĐỔI GIAO DIỆN DARK / LIGHT
+    // ==========================================
+    const themeToggleBtn = document.getElementById("themeToggle");
+
+    // Lấy trạng thái đã lưu từ localStorage
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        if (themeToggleBtn) themeToggleBtn.textContent = "☀️";
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener("click", () => {
+            let theme = document.documentElement.getAttribute("data-theme");
+
+            if (theme === "dark") {
+                document.documentElement.removeAttribute("data-theme");
+                localStorage.setItem("theme", "light");
+                themeToggleBtn.textContent = "🌙";
+            } else {
+                document.documentElement.setAttribute("data-theme", "dark");
+                localStorage.setItem("theme", "dark");
+                themeToggleBtn.textContent = "☀️";
+            }
+        });
+    }
 
 });
 

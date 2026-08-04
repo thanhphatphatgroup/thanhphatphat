@@ -1,3 +1,8 @@
+/* ==================================================
+   STYLE: EUROPEAN LUXURY FOREST GREEN (FULL 880+ LINES)
+   BRAND: THÀNH PHÁT PHÁT PLASTIC
+================================================== */
+
 /* RESET */
 
 * {
@@ -6,10 +11,131 @@
     box-sizing: border-box;
 }
 
+:root {
+    --green-primary: #1e3a2b;      /* Xanh rêu đậm cao cấp */
+    --green-hover: #2d5a40;        /* Xanh rêu khi hover */
+    --green-light-bg: #f4f6f4;     /* Nền xám rêu nhạt */
+    --green-accent: #3b7052;       /* Điểm nhấn xanh rêu tươi nhẹ */
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --border-color: #e2e8f0;
+    --border-green: #d1ded6;
+}
+
+/* ==================================================
+   BỘ MÃ DARK MODE & NÚT CHUYỂN GIAO DIỆN (ĐÃ NỔI BẬT KHỐI & SÁNG ICON)
+================================================== */
+
+/* THEME DARK MODE */
+[data-theme="dark"] {
+    --green-primary: #3b7052;
+    --green-hover: #4e8c68;
+    --green-light-bg: #13241a;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --border-color: #1e3a2b;
+    --border-green: #2e533c;
+}
+
+[data-theme="dark"] body {
+    background-color: #0a140e !important;
+    color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .about,
+[data-theme="dark"] .vision,
+[data-theme="dark"] .products,
+[data-theme="dark"] .partner {
+    background-color: #0a140e !important;
+}
+
+[data-theme="dark"] .founder,
+[data-theme="dark"] .core,
+[data-theme="dark"] .solution,
+[data-theme="dark"] .process,
+[data-theme="dark"] .contact {
+    background-color: #112218 !important;
+}
+
+/* KHỐI CARD NỔI BẬT HẲN TRONG DARK MODE */
+[data-theme="dark"] .card,
+[data-theme="dark"] .founder-container,
+[data-theme="dark"] .core-item,
+[data-theme="dark"] .solution-box,
+[data-theme="dark"] .process-item,
+[data-theme="dark"] .contact-box,
+[data-theme="dark"] .product-item,
+[data-theme="dark"] .contact-card {
+    background-color: #182e22 !important;
+    border-color: #2e533c !important;
+    color: #f1f5f9 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] p,
+[data-theme="dark"] li,
+[data-theme="dark"] blockquote {
+    color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .slide {
+    background-color: #1a3325 !important;
+    border-color: #2e533c !important;
+}
+
+/* ĐỔI MÀU ICON ĐEN THÀNH MÀU TRẮNG SÁNG TRONG DARK MODE */
+[data-theme="dark"] .icon img,
+[data-theme="dark"] .process-bar img {
+    filter: brightness(0) invert(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.6)) !important;
+}
+
+/* NÚT CHUYỂN GIAO DIỆN SÁNG / TỐI NỔI TRÊN CÙNG */
+.theme-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid var(--green-primary);
+    color: var(--green-primary);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .theme-toggle-btn {
+    background: #182e22;
+    border-color: #3b7052;
+    color: #ffffff;
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.1);
+}
+
+/* FIX CĂN GIỮA NÚT BACK TO TOP */
+#backToTop {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: #111827;
+    color: var(--text-primary);
     background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
 }
 
 img {
@@ -21,18 +147,22 @@ img {
 /* GLOBAL */
 
 section {
-    padding: 80px 120px;
+    padding: 90px 120px;
 }
 
 h1 {
     font-size: 48px;
+    font-weight: 800;
     letter-spacing: -0.02em;
+    color: #ffffff;
 }
 
 h2 {
-    font-size: 36px;
+    font-size: 34px;
+    font-weight: 700;
     margin-bottom: 20px;
     letter-spacing: -0.02em;
+    color: var(--green-primary);
 }
 
 /* GỘP MARGIN-BOTTOM LẶP LẠI CHO CÁC SECTION */
@@ -49,13 +179,18 @@ h2 {
 }
 
 h3 {
+    font-size: 20px;
+    font-weight: 600;
     margin-bottom: 8px;
+    color: var(--green-primary);
+    letter-spacing: -0.01em;
 }
 
 p {
     line-height: 1.7;
     margin-bottom: 12px;
-    color: #4b5563;
+    color: var(--text-secondary);
+    font-size: 16px;
 }
 
 ul {
@@ -66,14 +201,14 @@ ul {
 li {
     margin-bottom: 8px;
     line-height: 1.6;
-    color: #4b5563;
+    color: var(--text-secondary);
 }
 
-/* BUTTON - LUXURY MINIMALIST STYLE */
+/* BUTTON - LUXURY GREEN STYLE */
 
 .btn {
     display: inline-block;
-    padding: 14px 30px;
+    padding: 14px 34px;
     border-radius: 50px;
     font-weight: 600;
     font-size: 15px;
@@ -82,33 +217,33 @@ li {
 }
 
 .primary {
-    color: #fff;
-    background: #111827;
-    border: 1px solid #111827;
+    color: #ffffff;
+    background: var(--green-primary);
+    border: 1px solid var(--green-primary);
 }
 
 .primary:hover {
-    background: #374151;
-    border-color: #374151;
+    background: var(--green-hover);
+    border-color: var(--green-hover);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 20px rgba(30, 58, 43, 0.25);
 }
 
 .secondary {
-    color: #111827;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #e5e7eb;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(8px);
 }
 
 .secondary:hover {
-    color: #111827;
+    color: var(--green-primary);
     background: #ffffff;
-    border-color: #111827;
+    border-color: #ffffff;
     transform: translateY(-2px);
 }
 
-/* BANNER */
+/* BANNER HERO */
 
 .banner {
     position: relative;
@@ -117,14 +252,15 @@ li {
     justify-content: center;
     height: 600px;
     padding-left: 80px;
-    color: #fff;
+    color: #ffffff;
     background: url("images/banner.webp") center / cover no-repeat;
 }
 
 .banner p {
     margin-bottom: 28px;
-    color: #f3f4f6;
+    color: #e2e8f0;
     font-size: 18px;
+    font-weight: 300;
 }
 
 .buttons {
@@ -137,7 +273,7 @@ li {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.65) 0%, rgba(15, 23, 42, 0.8) 100%);
+    background: linear-gradient(180deg, rgba(15, 30, 22, 0.72) 0%, rgba(15, 30, 22, 0.88) 100%);
 }
 
 .banner * {
@@ -145,7 +281,7 @@ li {
     z-index: 1;
 }
 
-/* ABOUT - MINIMALIST LUXURY COLOR */
+/* ABOUT */
 
 .about {
     background: #ffffff;
@@ -159,32 +295,33 @@ li {
 
 .card {
     padding: 30px 24px;
-    background: #f8f9fa;
-    border: 1px solid #e5e7eb;
+    background: var(--green-light-bg);
+    border: 1px solid var(--border-green);
+    border-top: 4px solid var(--green-primary);
     border-radius: 16px;
     transition: 0.3s;
 }
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 12px 30px rgba(30, 58, 43, 0.08);
 }
 
 .about-desc {
     max-width: 900px;
-    margin: 40px auto 0;
+    margin: 50px auto 0;
     text-align: center;
     font-size: 20px;
     line-height: 1.8;
     font-weight: 500;
-    color: #111827;
+    color: var(--green-primary);
     letter-spacing: .2px;
 }
 
 /* FOUNDER */
 
 .founder {
-    background: #f8f9fa;
+    background: var(--green-light-bg);
 }
 
 .founder-container {
@@ -193,7 +330,7 @@ li {
     gap: 40px;
     padding: 40px;
     background: #ffffff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-green);
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
@@ -211,10 +348,11 @@ li {
 blockquote {
     margin: 20px 0;
     padding-left: 16px;
-    border-left: 3px solid #111827;
+    border-left: 4px solid var(--green-primary);
     font-style: italic;
     font-size: 18px;
-    color: #111827;
+    color: var(--green-primary);
+    font-weight: 500;
 }
 
 /* VISION */
@@ -226,7 +364,6 @@ blockquote {
 .vision-container {
     padding: 0;
     background: transparent;
-    border-radius: 0;
 }
 
 .vision-grid {
@@ -238,31 +375,32 @@ blockquote {
     flex: 1;
     padding: 35px;
     border-radius: 16px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-green);
 }
 
 .left {
-    background: #f8f9fa;
+    background: var(--green-light-bg);
 }
 
 .right {
-    background: #0f172a;
+    background: var(--green-primary);
     color: #ffffff;
+    border-color: var(--green-primary);
 }
 
 .right h3, .right p, .right li {
-    color: #f8fafc;
+    color: #f1f5f9;
 }
 
 /* CORE */
 
 .core {
-    background: #f8f9fa;
+    background: var(--green-light-bg);
 }
 
 .core-grid {
     display: flex;
-    gap: 40px;
+    gap: 30px;
 }
 
 .core-item {
@@ -271,9 +409,14 @@ blockquote {
     align-items: flex-start;
     padding: 24px;
     background: #ffffff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-green);
     border-radius: 16px;
     flex: 1;
+    transition: 0.3s;
+}
+
+.core-item:hover {
+    border-color: var(--green-accent);
 }
 
 .icon {
@@ -297,7 +440,7 @@ blockquote {
 /* SOLUTION */
 
 .solution {
-    background: #f8f9fa;
+    background: var(--green-light-bg);
 }
 
 .solution-box {
@@ -305,7 +448,7 @@ blockquote {
     gap: 40px;
     padding: 40px;
     background: #ffffff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-green);
     border-radius: 20px;
 }
 
@@ -319,7 +462,7 @@ blockquote {
 /* PROCESS */
 
 .process {
-    background: #f8f9fa;
+    background: var(--green-light-bg);
 }
 
 .process-grid {
@@ -331,7 +474,7 @@ blockquote {
 .process-item {
     background: #ffffff;
     padding: 30px 20px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-green);
     border-radius: 16px;
 }
 
@@ -342,7 +485,7 @@ blockquote {
     height: 70px;
     width: 70px;
     margin: 0 auto 20px;
-    background: #f8f9fa;
+    background: var(--green-light-bg);
     border-radius: 50%;
 }
 
@@ -373,8 +516,8 @@ blockquote {
 
 .partner-item {
     padding: 20px;
-    background: #f8f9fa;
-    border-left: 4px solid #111827;
+    background: var(--green-light-bg);
+    border-left: 4px solid var(--green-primary);
     border-radius: 8px;
 }
 
@@ -394,7 +537,7 @@ blockquote {
 /* CONTACT */
 
 .contact {
-    background: #f8f9fa;
+    background: var(--green-light-bg);
 }
 
 .contact-box {
@@ -404,7 +547,7 @@ blockquote {
     flex-wrap: wrap;
     padding: 40px;
     background: #ffffff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-green);
     border-radius: 20px;
 }
 
@@ -419,7 +562,7 @@ blockquote {
 .contact-left hr {
     margin: 20px 0;
     border: 0;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid var(--border-color);
 }
 
 .contact-buttons {
@@ -435,6 +578,12 @@ blockquote {
     max-width: 100%;
     margin-top: 20px;
     margin-bottom: 15px;
+    border-radius: 12px;
+}
+
+.contact-card {
+    padding: 20px;
+    background: var(--green-light-bg);
     border-radius: 12px;
 }
 
@@ -455,21 +604,74 @@ blockquote {
     flex: 1 1 350px;
 }
 
+/* 1. CHỈ ĐỔI MÀU LINK CHỮ EMAIL TRONG PHẦN LIÊN HỆ (KHÔNG ẢNH HƯỞNG NÚT) */
+p a[href^="mailto:"] {
+    color: #1e3a2b !important; /* Giao diện sáng: chữ màu xanh rêu đậm dễ đọc */
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+[data-theme="dark"] p a[href^="mailto:"] {
+    color: #34d399 !important; /* Giao diện tối: màu xanh ngọc nổi bật */
+}
+
+/* 2. CỐ ĐỊNH CHỮ CẢ 2 NÚT TRÊN BANNER LUÔN LÀ MÀU TRẮNG SÁNG */
+.banner .btn.primary {
+    color: #ffffff !important;
+    background: var(--green-primary) !important;
+    border-color: var(--green-primary) !important;
+}
+
+.banner .btn.secondary {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(8px);
+}
+
+.banner .btn.secondary:hover {
+    color: var(--green-primary) !important;
+    background: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+/* 3. ĐIỀU CHỈNH NÚT SECONDARY Ở PHẦN CONTACT CỦA GIAO DIỆN SÁNG / TỐI */
+.contact .btn.secondary {
+    color: #1e3a2b !important;
+    background: transparent;
+    border: 1px solid #1e3a2b !important;
+}
+
+.contact .btn.secondary:hover {
+    color: #ffffff !important;
+    background: #1e3a2b !important;
+}
+
+[data-theme="dark"] .contact .btn.secondary {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+[data-theme="dark"] .contact .btn.secondary:hover {
+    color: #112218 !important;
+    background: #ffffff !important;
+}
+
 /* PRODUCT DETAIL & ACTIONS */
 
 .product-item {
     padding: 30px;
     margin-bottom: 50px;
-    background: #fff;
-    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    border: 1px solid var(--border-green);
     border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     transition: 0.3s;
 }
 
 .product-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 30px rgba(30, 58, 43, 0.08);
 }
 
 .product-item h3 {
@@ -485,7 +687,7 @@ blockquote {
     margin-top: 20px;
 }
 
-/* SLIDER (GIỮ NGUYÊN 100% CẤU TRÚC GỐC ĐỂ DRAG MƯỢT) */
+/* SLIDER (GIỮ NGUYÊN 100% CẤU TRÚC GỐC ĐỂ DRAG KÉO MƯỢT TỐI ĐA) */
 
 .slider {
     position: relative;
@@ -516,8 +718,8 @@ blockquote {
     min-width: calc((100% - 40px) / 3);
     height: 240px;
     border-radius: 12px;
-    background: #f8f9fa;
-    border: 1px solid #e5e7eb;
+    background: var(--green-light-bg);
+    border: 1px solid var(--border-green);
 }
 
 /* IMAGE */
@@ -542,9 +744,9 @@ blockquote {
     padding: 10px 14px;
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(6px);
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-green);
     border-radius: 50%;
-    color: #111827;
+    color: var(--green-primary);
     font-size: 18px;
     cursor: pointer;
     z-index: 2;
@@ -553,7 +755,8 @@ blockquote {
 }
 
 .slider-btn:hover {
-    background: #ffffff;
+    background: var(--green-primary);
+    color: #ffffff;
     transform: translateY(-50%) scale(1.1);
 }
 
@@ -577,12 +780,15 @@ blockquote {
     width: 8px;
     height: 8px;
     margin: 0 4px;
-    background: #d1d5db;
+    background: #cbd5e1;
     border-radius: 50%;
+    transition: 0.3s;
 }
 
 .dots .active {
-    background: #111827;
+    background: var(--green-primary);
+    width: 20px;
+    border-radius: 10px;
 }
 
 /* USER SELECT */
@@ -601,7 +807,7 @@ blockquote {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(15, 30, 22, 0.9);
     opacity: 0;
     visibility: hidden;
     z-index: 9999;
@@ -668,18 +874,6 @@ blockquote {
     transform: scale(1.15);
 }
 
-.zalo-btn:hover img {
-    box-shadow: 0 0 15px #0068ff;
-}
-
-.facebook-btn:hover img {
-    box-shadow: 0 0 15px #0084ff;
-}
-
-.tiktok-btn:hover img {
-    box-shadow: 0 0 15px #000;
-}
-
 /* FLOAT CLICK */
 
 .zalo-btn:active img,
@@ -713,7 +907,7 @@ blockquote {
     height: 44px;
     border: none;
     border-radius: 50%;
-    background: #111827;
+    background: var(--green-primary);
     color: #fff;
     font-size: 18px;
     cursor: pointer;
@@ -722,7 +916,7 @@ blockquote {
 }
 
 #backToTop:hover {
-    background: #374151;
+    background: var(--green-hover);
     transform: scale(1.1);
 }
 
