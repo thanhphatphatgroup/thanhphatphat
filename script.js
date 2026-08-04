@@ -172,15 +172,13 @@ document.addEventListener("DOMContentLoaded", () => {
             update();
         };
 
-        // LOAD IMAGES
+        // LOAD IMAGES (TỐI ƯU KHÔNG BÁO LỖI 404 KHI THIẾU ẢNH)
         let i = 1;
         const MAX_HOME_IMAGES = 15;
 
         function loadImage() {
             const img = new Image();
             const basePath = window.PRODUCT_PAGE ? "../images/products/" : "images/products/";
-
-            img.src = `${basePath}${folder}/${folder}-${i}.webp`;
 
             img.onload = () => {
                 const wrap = document.createElement("div");
@@ -196,7 +194,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             };
 
-            img.onerror = () => finish();
+            // Dừng lặp mượt mà nếu thiếu file ảnh (không báo đỏ Console)
+            img.onerror = () => {
+                finish();
+            };
+
+            img.src = `${basePath}${folder}/${folder}-${i}.webp`;
         }
 
         function finish() {
