@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Tối ưu Resize với Debounce
+        // Tối ưu Resize
         window.addEventListener("resize", debounce(() => {
             calcLayout();
             update();
@@ -172,34 +172,38 @@ document.addEventListener("DOMContentLoaded", () => {
             update();
         };
 
-        // LOAD IMAGES (TỐI ƯU KHÔNG BÁO LỖI 404 KHI THIẾU ẢNH)
-        let i = 1;
-        const MAX_HOME_IMAGES = 15;
-
-        function loadImage() {
-            const img = new Image();
+        // LOAD IMAGES TỪ GALLERY.JSON (TỰ ĐỘNG LẤY TỐI ĐA 15 ẢNH ĐẦU)
+        async function loadImagesFromJSON() {
             const basePath = window.PRODUCT_PAGE ? "../images/products/" : "images/products/";
+            const jsonPath = `${basePath}${folder}/gallery.json`;
 
-            img.onload = () => {
-                const wrap = document.createElement("div");
-                wrap.className = "slide";
-                wrap.appendChild(img);
-                track.appendChild(wrap);
+            try {
+                const response = await fetch(jsonPath);
+                if (!response.ok) throw new Error("Không tìm thấy gallery.json");
+                
+                const data = await response.json();
+                
+                // Lấy tối đa 12 ảnh đầu tiên từ danh sách trong JSON
+                const imagesToLoad = (data.images || []).slice(0, 12);
 
-                i++;
-                if (i <= MAX_HOME_IMAGES) {
-                    loadImage();
-                } else {
-                    finish();
-                }
-            };
+                imagesToLoad.forEach(imgName => {
+                    const wrap = document.createElement("div");
+                    wrap.className = "slide";
 
-            // Dừng lặp mượt mà nếu thiếu file ảnh (không báo đỏ Console)
-            img.onerror = () => {
+                    const img = new Image();
+                    img.src = `${basePath}${folder}/${imgName}`;
+                    img.alt = folder;
+                    img.loading = "lazy";
+
+                    wrap.appendChild(img);
+                    track.appendChild(wrap);
+                });
+
                 finish();
-            };
 
-            img.src = `${basePath}${folder}/${folder}-${i}.webp`;
+            } catch (error) {
+                console.error(`Lỗi tải ảnh cho folder ${folder}:`, error);
+            }
         }
 
         function finish() {
@@ -213,10 +217,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let loaded = false;
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-
                 if (entry.isIntersecting && !loaded) {
                     loaded = true;
-                    loadImage();
+                    loadImagesFromJSON();
                     observer.unobserve(slider);
                 }
             });
