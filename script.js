@@ -7,18 +7,17 @@ function debounce(func, wait) {
     };
 }
 
-// ===================== DOM READY =====================
+// ===================== DOM READY (REVEAL, BACK TO TOP, THEME) =====================
 window.addEventListener("DOMContentLoaded", function () {
     const reveals = document.querySelectorAll(".reveal");
     const backToTop = document.getElementById("backToTop");
 
     if (backToTop) {
-
         let isTicking = false;
 
         function handleScroll() {
             const windowHeight = window.innerHeight;
-            // REVEAL
+            // REVEAL ANIMATION
             reveals.forEach((el) => {
                 if (el.getBoundingClientRect().top < windowHeight - 50) {
                     el.classList.add("show");
@@ -27,12 +26,11 @@ window.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
-            // BACK TO TOP
+            // BACK TO TOP BUTTON
             backToTop.style.display = window.scrollY > 300 ? "flex" : "none";
             isTicking = false;
         }
 
-        // Tối ưu Scroll bằng requestAnimationFrame
         window.addEventListener("scroll", () => {
             if (!isTicking) {
                 window.requestAnimationFrame(handleScroll);
@@ -65,9 +63,8 @@ window.addEventListener("DOMContentLoaded", function () {
     // CHỨC NĂNG CHUYỂN ĐỔI GIAO DIỆN DARK / LIGHT
     // ==========================================
     const themeToggleBtn = document.getElementById("themeToggle");
-
-    // Lấy trạng thái đã lưu từ localStorage
     const currentTheme = localStorage.getItem("theme");
+    
     if (currentTheme === "dark") {
         document.documentElement.setAttribute("data-theme", "dark");
         if (themeToggleBtn) themeToggleBtn.textContent = "☀️";
@@ -88,7 +85,6 @@ window.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-
 });
 
 
@@ -143,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
             update();
         }, 150));
 
-        // BUTTONS
+        // CONTROLS (BUTTONS & DOTS)
         const prev = document.createElement("button");
         prev.innerHTML = "<";
         prev.className = "slider-btn prev";
@@ -172,38 +168,62 @@ document.addEventListener("DOMContentLoaded", () => {
             update();
         };
 
-        // LOAD IMAGES TỪ GALLERY.JSON (TỰ ĐỘNG LẤY TỐI ĐA 15 ẢNH ĐẦU)
-        async function loadImagesFromJSON() {
+        // LOAD IMAGES: ƯU TIÊN FEATURED.JSON CHIA THEO MỤC -> FALLBACK SANG GALLERY.JSON
+        async function loadImages() {
             const basePath = window.PRODUCT_PAGE ? "../images/products/" : "images/products/";
-            const jsonPath = `${basePath}${folder}/gallery.json`;
+            let imagesToLoad = [];
+            let isFeaturedLoaded = false;
 
+            // 1. Thử tải dữ liệu từ featured.json (Tránh cache)
             try {
-                const response = await fetch(jsonPath);
-                if (!response.ok) throw new Error("Không tìm thấy gallery.json");
+                const featuredPath = window.PRODUCT_PAGE ? "../featured.json" : "featured.json";
+                const response = await fetch(`${featuredPath}?v=${Date.now()}`, { cache: "no-store" });
                 
-                const data = await response.json();
-                
-                // Lấy tối đa 12 ảnh đầu tiên từ danh sách trong JSON
-                const imagesToLoad = (data.images || []).slice(0, 12);
-
-                imagesToLoad.forEach(imgName => {
-                    const wrap = document.createElement("div");
-                    wrap.className = "slide";
-
-                    const img = new Image();
-                    img.src = `${basePath}${folder}/${imgName}`;
-                    img.alt = folder;
-                    img.loading = "lazy";
-
-                    wrap.appendChild(img);
-                    track.appendChild(wrap);
-                });
-
-                finish();
-
-            } catch (error) {
-                console.error(`Lỗi tải ảnh cho folder ${folder}:`, error);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data[folder] && data[folder].length > 0) {
+                        // Tải danh sách từ featured.json theo danh mục (Ví dụ: "ly-giay/ly-1.webp")
+                        imagesToLoad = data[folder].map(relPath => `${basePath}${relPath}`);
+                        isFeaturedLoaded = true;
+                    }
+                }
+            } catch (err) {
+                // Không tìm thấy featured.json hoặc lỗi -> Chuyển sang đọc gallery.json
             }
+
+            // 2. Nếu không có featured.json cho folder này, fallback về đọc gallery.json
+            if (!isFeaturedLoaded) {
+                try {
+                    const jsonPath = `${basePath}${folder}/gallery.json`;
+                    const response = await fetch(jsonPath);
+                    if (response.ok) {
+                        const data = await response.json();
+                        const rawImages = (data.images || []).slice(0, 12);
+                        imagesToLoad = rawImages.map(imgName => `${basePath}${folder}/${imgName}`);
+                    }
+                } catch (err) {
+                    console.error(`Lỗi tải gallery.json cho folder ${folder}:`, err);
+                }
+            }
+
+            // 3. Render ảnh vào Slider Track
+            imagesToLoad.forEach(fullImgPath => {
+                const wrap = document.createElement("div");
+                wrap.className = "slide";
+
+                const img = new Image();
+                img.src = fullImgPath;
+                img.alt = folder;
+                img.loading = "lazy";
+                img.onerror = function () {
+                    wrap.style.display = "none"; // Ẩn slide nếu file vô tình bị xóa
+                };
+
+                wrap.appendChild(img);
+                track.appendChild(wrap);
+            });
+
+            finish();
         }
 
         function finish() {
@@ -214,12 +234,13 @@ document.addEventListener("DOMContentLoaded", () => {
             enableZoom();
         }
 
+        // Lazy load slider khi cuộn màn hình tới nơi
         let loaded = false;
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !loaded) {
                     loaded = true;
-                    loadImagesFromJSON();
+                    loadImages();
                     observer.unobserve(slider);
                 }
             });
@@ -227,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         observer.observe(slider);
 
-        // SWIPE MOBILE
+        // TOUCH SWIPE MOBILE
         let startX = 0;
         let currentX = 0;
         let isDragging = false;
@@ -310,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    // ZOOM OVERLAY
+    // ZOOM OVERLAY MODAL
     const overlay = document.getElementById("zoomOverlay");
     const zoomImg = document.getElementById("zoomImg");
 
@@ -346,5 +367,4 @@ document.addEventListener("DOMContentLoaded", () => {
             overlay.classList.remove("show");
         });
     }
-
 });

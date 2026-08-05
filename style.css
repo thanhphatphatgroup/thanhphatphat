@@ -1239,3 +1239,16 @@ section + section {
     background: #ffffff !important;
     color: #09090b !important;
 }
+/* ==========================================
+   FIX TRIỆT ĐỂ LỖI MÀU CHỮ SỨ MỆNH TRONG DARK MODE
+========================================== */
+[data-theme="dark"] .vision-card.right {
+    background: #18181b !important;
+    border-color: #27272a !important;
+}
+
+[data-theme="dark"] .vision-card.right h3,
+[data-theme="dark"] .vision-card.right p,
+[data-theme="dark"] .vision-card.right li {
+    color: #f4f4f5 !important;
+}
