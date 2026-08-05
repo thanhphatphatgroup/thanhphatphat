@@ -2,7 +2,9 @@
 <html lang="vi">
 
 <head>
-
+    <!-- Ưu tiên tải CSS và Ảnh Banner song song ngay từ millisecond đầu tiên -->
+    <link rel="preload" href="style.css?v=3" as="style">
+    <link rel="preload" href="images/banner.webp" as="image" type="image/webp" fetchpriority="high">
     <!-- HEAD & SECURITY -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -118,6 +120,18 @@
     }
     </script>
 
+
+    <style>
+    /* CSS cốt lõi dựng khung Banner hiển thị tức thì */
+    .banner {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 600px;
+        background: #121215 url("images/banner.webp") center / cover no-repeat;
+    }
+    </style>
 </head>
 
 <body>
