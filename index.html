@@ -711,45 +711,6 @@
 
         </section>
 
-        <!-- THƯ VIỆN GỬI EMAIL/API -->
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-        <!-- PHẦN ĐÁNH GIÁ KHÁCH HÀNG & FORM -->
-        <section class="reviews reveal" id="reviews">
-            <h2>Khách Hàng Đánh Giá</h2>
-
-            <!-- KHUNG TỰ ĐỘNG LOAD ĐÁNH GIÁ TỪ GOOGLE SHEETS -->
-            <div class="reviews-grid" id="reviewsList"></div>
-
-            <!-- FORM CHO KHÁCH TỰ ĐIỀN ĐÁNH GIÁ -->
-            <div class="review-form-box card">
-                <h3>Gửi đánh giá của bạn</h3>
-                <form id="reviewForm">
-                    <div class="form-group">
-                        <label>Họ và tên / Tên cửa hàng:</label>
-                        <input type="text" id="reviewerName" placeholder="Ví dụ: Anh Nam - Cafe Sài Gòn" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Đánh giá của bạn:</label>
-                        <div class="star-rating">
-                            <input type="radio" id="star5" name="rating" value="5" checked><label for="star5">★</label>
-                            <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
-                            <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
-                            <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
-                            <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Nội dung nhận xét:</label>
-                        <textarea id="reviewComment" rows="3" placeholder="Chia sẻ trải nghiệm của bạn về sản phẩm và dịch vụ..." required></textarea>
-                    </div>
-
-                    <button type="submit" id="btnSubmitReview" class="btn primary">Gửi Đánh Giá</button>
-                </form>
-            </div>
-        </section>
     </main>
 
     <!-- SCRIPTS -->
