@@ -370,18 +370,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// TOAST NOTIFICATION VÀ GỬI EMAIL ĐÁNH GIÁ
+// TỰ ĐỘNG ĐỌC & GHI ĐÁNH GIÁ VỚI GOOGLE SHEETS
 // ==========================================
+// THAY ĐƯỜNG LINK WEB APP URL CỦA BRO VÀO DÒNG DƯỚI ĐÂY:
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxrwxJMDcVEmHuFMBtbAWMaXlXbWSoOtM5RvDVewe8O_X52LkGzLt_p_p7aUfdDrXXzTQ/exec";
+
 function showToast(message) {
     const existingToast = document.querySelector('.custom-toast');
     if (existingToast) existingToast.remove();
 
     const toast = document.createElement('div');
     toast.className = 'custom-toast';
-    toast.innerHTML = `
-        <span class="toast-icon">✓</span>
-        <span>${message}</span>
-    `;
+    toast.innerHTML = `<span class="toast-icon">✓</span><span>${message}</span>`;
     document.body.appendChild(toast);
 
     setTimeout(() => toast.classList.add('show'), 10);
@@ -391,20 +391,48 @@ function showToast(message) {
     }, 3500);
 }
 
-(function() {
-    // Thay YOUR_PUBLIC_KEY bằng Public Key từ emailjs.com
-    if (typeof emailjs !== "undefined") {
-        emailjs.init("YOUR_PUBLIC_KEY");
-    }
-})();
-
-document.addEventListener("DOMContentLoaded", () => {
-    const reviewForm = document.getElementById("reviewForm");
+// Hàm tải toàn bộ đánh giá từ Google Sheet ra giao diện web
+async function loadSavedReviews() {
     const reviewsList = document.getElementById("reviewsList");
+    if (!reviewsList || !GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("AKfycbx...")) return;
+
+    try {
+        const response = await fetch(GOOGLE_SCRIPT_URL);
+        const reviews = await response.json();
+        
+        reviewsList.innerHTML = ""; // Làm sạch khung trước khi vẽ
+        
+        // Hiện đánh giá mới nhất lên trên cùng
+        reviews.reverse().forEach(item => {
+            const ratingVal = parseInt(item.rating) || 5;
+            const starsHtml = "★".repeat(ratingVal) + "☆".repeat(5 - ratingVal);
+            
+            const card = document.createElement("div");
+            card.className = "card review-card";
+            card.innerHTML = `
+                <div class="stars">${starsHtml}</div>
+                <p>"${item.comment}"</p>
+                <div class="reviewer-info">
+                    <strong>${item.name}</strong>
+                    <span>Khách hàng đã xác thực</span>
+                </div>
+            `;
+            reviewsList.appendChild(card);
+        });
+    } catch (err) {
+        console.error("Chưa tải được danh sách đánh giá:", err);
+    }
+}
+
+// Xử lý Sự kiện khi Khách gửi Đánh giá mới
+document.addEventListener("DOMContentLoaded", () => {
+    loadSavedReviews(); // Tải đánh giá đã lưu ngay khi mở trang web
+
+    const reviewForm = document.getElementById("reviewForm");
     const btnSubmit = document.getElementById("btnSubmitReview");
 
     if (reviewForm) {
-        reviewForm.addEventListener("submit", (e) => {
+        reviewForm.addEventListener("submit", async (e) => {
             e.preventDefault();
 
             const name = document.getElementById("reviewerName").value.trim();
@@ -414,43 +442,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!name || !comment) return;
 
-            btnSubmit.innerText = "Đang gửi...";
+            btnSubmit.innerText = "Đang lưu...";
             btnSubmit.disabled = true;
 
-            // 1. Tạm thời hiển thị thẻ đánh giá mới trên web
-            const starsHtml = "★".repeat(parseInt(ratingVal)) + "☆".repeat(5 - parseInt(ratingVal));
-            const newCard = document.createElement("div");
-            newCard.className = "card review-card";
-            newCard.innerHTML = `
-                <div class="stars">${starsHtml}</div>
-                <p>"${comment}"</p>
-                <div class="reviewer-info">
-                    <strong>${name}</strong>
-                    <span>Khách hàng vừa đánh giá</span>
-                </div>
-            `;
-            reviewsList.prepend(newCard);
-
-            // 2. Gửi dữ liệu về Email
-            const templateParams = {
-                from_name: name,
-                rating: ratingVal + " sao",
-                message: comment
+            const payload = {
+                name: name,
+                rating: ratingVal,
+                comment: comment
             };
 
-            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
-                .then(() => {
-                    showToast("Cảm ơn bạn! Đánh giá đã gửi thành công.");
-                })
-                .catch((error) => {
-                    console.log("Lỗi gửi Email:", error);
-                    showToast("Đã gửi đánh giá thành công!");
-                })
-                .finally(() => {
-                    reviewForm.reset();
-                    btnSubmit.innerText = "Gửi Đánh Giá";
-                    btnSubmit.disabled = false;
+            try {
+                // Đẩy dữ liệu lưu vĩnh viễn vào Google Sheet
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
                 });
+
+                showToast("Cảm ơn bạn! Đánh giá đã được ghi nhận vĩnh viễn.");
+                reviewForm.reset();
+                
+                // Tải lại danh sách sau 1.2s để cập nhật ngay đánh giá vừa gửi
+                setTimeout(loadSavedReviews, 1200);
+            } catch (error) {
+                console.error("Lỗi:", error);
+                showToast("Đã gửi đánh giá thành công!");
+            } finally {
+                btnSubmit.innerText = "Gửi Đánh Giá";
+                btnSubmit.disabled = false;
+            }
         });
     }
 });

@@ -1253,7 +1253,7 @@ section + section {
     color: #f4f4f5 !important;
 }
 /* ==================================================
-   PHẦN ĐÁNH GIÁ KHÁCH HÀNG & FORM
+   PHẦN ĐÁNH GIÁ KHÁCH HÀNG & FORM (GOOGLE SHEETS)
 ================================================== */
 .reviews {
     background: var(--green-light-bg);
@@ -1263,7 +1263,7 @@ section + section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 30px;
 }
 
 .review-card {
@@ -1308,7 +1308,6 @@ section + section {
     color: var(--text-secondary);
 }
 
-/* FORM ĐÁNH GIÁ TRỰC TIẾP */
 .review-form-box {
     max-width: 600px;
     margin: 0 auto;
@@ -1377,128 +1376,51 @@ section + section {
     color: #f59e0b;
 }
 
-/* TƯƠNG THÍCH DARK MODE */
-[data-theme="dark"] .reviews {
-    background: #09090b !important;
+/* CUSTOM TOAST LUXURY */
+.custom-toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #ffffff;
+    color: var(--green-primary);
+    border: 1px solid var(--border-green);
+    padding: 14px 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.custom-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast-icon {
+    background: var(--green-primary);
+    color: #ffffff;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* DARK MODE SUPPORT */
+[data-theme="dark"] .reviews { background: #09090b !important; }
 [data-theme="dark"] .review-card,
-[data-theme="dark"] .review-form-box {
-    background-color: #18181b !important;
-    border-color: #27272a !important;
-}
-
-[data-theme="dark"] .reviewer-info strong {
-    color: #f4f4f5 !important;
-}
-
-[data-theme="dark"] .reviewer-info,
-[data-theme="dark"] .review-card p {
-    border-top-color: #27272a !important;
-}
-
-[data-theme="dark"] .form-group input,
-[data-theme="dark"] .form-group textarea {
-    background: #09090b !important;
-    border-color: #27272a !important;
-    color: #f4f4f5 !important;
-}
-
-/* ==========================================
-   CUSTOM TOAST NOTIFICATION (SANG TRỌNG)
-========================================== */
-.custom-toast {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #ffffff;
-    color: var(--green-primary);
-    border: 1px solid var(--border-green);
-    padding: 14px 24px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 15px;
-    font-weight: 500;
-    z-index: 9999;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.custom-toast.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.toast-icon {
-    background: var(--green-primary);
-    color: #ffffff;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-/* DARK MODE CHO TOAST */
-[data-theme="dark"] .custom-toast {
-    background: #18181b !important;
-    color: #f4f4f5 !important;
-    border-color: #27272a !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
-
-/* ==========================================
-   CUSTOM TOAST NOTIFICATION (LUXURY)
-========================================== */
-.custom-toast {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #ffffff;
-    color: var(--green-primary);
-    border: 1px solid var(--border-green);
-    padding: 14px 24px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 15px;
-    font-weight: 500;
-    z-index: 9999;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.custom-toast.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.toast-icon {
-    background: var(--green-primary);
-    color: #ffffff;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-[data-theme="dark"] .custom-toast {
-    background: #18181b !important;
-    color: #f4f4f5 !important;
-    border-color: #27272a !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
+[data-theme="dark"] .review-form-box { background-color: #18181b !important; border-color: #27272a !important; }
+[data-theme="dark"] .reviewer-info strong { color: #f4f4f5 !important; }
+[data-theme="dark"] .reviewer-info, [data-theme="dark"] .review-card p { border-top-color: #27272a !important; }
+[data-theme="dark"] .form-group input, [data-theme="dark"] .form-group textarea { background: #09090b !important; border-color: #27272a !important; color: #f4f4f5 !important; }
+[data-theme="dark"] .custom-toast { background: #18181b !important; color: #f4f4f5 !important; border-color: #27272a !important; }
