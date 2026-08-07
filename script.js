@@ -368,3 +368,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// ==========================================
+// POPUP THÔNG BÁO NGHỈ LỄ (TỰ ẨN HOÀN TOÀN KHI KHÔNG CÓ ẢNH)
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("holidayModal");
+    if (!modal) return;
+
+    // Tạo ảnh ảo để test xem file popup.webp có tồn tại không trước khi hiện Modal
+    const imgTest = new Image();
+    imgTest.src = "images/announcements/popup.webp";
+
+    imgTest.onload = () => {
+        // Tồn tại ảnh -> Cập nhật src cho Modal rồi mới bật nền mờ
+        const bannerImg = modal.querySelector(".modal-banner-img");
+        if (bannerImg) bannerImg.src = imgTest.src;
+
+        setTimeout(() => {
+            modal.classList.add("show");
+        }, 500);
+    };
+
+    imgTest.onerror = () => {
+        // Không có ảnh -> Giữ ẩn tuyệt đối, không bật nền mờ hay icon lỗi
+        modal.classList.remove("show");
+    };
+
+    // Bấm bất kỳ đâu cũng tắt
+    window.addEventListener("click", () => {
+        if (modal.classList.contains("show")) {
+            modal.classList.remove("show");
+        }
+    }, true);
+});
