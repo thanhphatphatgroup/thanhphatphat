@@ -1412,3 +1412,45 @@ section + section {
         min-height: 320px !important;
     }
 }
+
+/* ==================================================
+   FIX TRIỆT ĐỂ BẢN ĐỒ BỊ TRẮNG TRÊN MOBILE & DESKTOP
+================================================== */
+.contact-box {
+    align-items: stretch !important;
+}
+
+.contact-left {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.contact-map {
+    margin-top: 20px !important;
+    width: 100% !important;
+    min-height: 320px !important;
+    height: 320px !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    position: relative !important;
+}
+
+.contact-map iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+}
+
+/* Xử lý riêng cho giao diện điện thoại */
+@media (max-width: 992px) {
+    .contact-map {
+        height: 300px !important;
+        min-height: 300px !important;
+        margin-bottom: 20px !important;
+    }
+}
