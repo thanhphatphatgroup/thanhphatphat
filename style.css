@@ -1363,6 +1363,9 @@ section + section {
     transform: scale(1.15);
 }
 
+/* ==================================================
+   FIX BẢN ĐỒ CÂN BẰNG CẢ DESKTOP LẪN MOBILE
+================================================== */
 .contact-box {
     align-items: stretch !important;
 }
@@ -1376,8 +1379,36 @@ section + section {
     margin-top: 20px;
     width: 100%;
     flex-grow: 1;
-    min-height: 250px;
+    min-height: 280px;
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-map iframe {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 280px !important;
+    border: 0;
+    display: block;
+}
+
+/* FIX RIÊNG CHO MÀN HÌNH ĐIỆN THOẠI (<= 992px) */
+@media (max-width: 992px) {
+    .contact-left {
+        display: block !important; /* Hủy flex-column trên mobile để tránh khoảng trống */
+    }
+
+    .contact-map {
+        flex-grow: 0 !important;
+        height: 320px !important; /* Cố định chiều cao hiển thị đẹp trên ĐT */
+        min-height: 320px !important;
+        margin-bottom: 25px; /* Tạo khoảng cách với ảnh xưởng bên dưới */
+    }
+
+    .contact-map iframe {
+        height: 320px !important;
+        min-height: 320px !important;
+    }
 }
