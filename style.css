@@ -1362,3 +1362,22 @@ section + section {
 .modal-close-btn:hover {
     transform: scale(1.15);
 }
+
+.contact-box {
+    align-items: stretch !important;
+}
+
+.contact-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-map {
+    margin-top: 20px;
+    width: 100%;
+    flex-grow: 1;
+    min-height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
